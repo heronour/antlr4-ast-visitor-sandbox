@@ -7,10 +7,8 @@ import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 
 import parser.ExpressionParser;
-import parser.v4.ExprV4Parser.addExprContext;
 import parser.v4.ExprV4Parser.atomContext;
-import parser.v4.ExprV4Parser.exprContext;
-import parser.v4.ExprV4Parser.mulExprContext;
+import parser.v4.ExprV4Parser.opExprContext;
 import parser.v4.ExprV4Parser.startContext;
 import ast.Expression;
 import ast.Number;
@@ -46,7 +44,7 @@ public class V4ExpressionParserListenerStyle extends ExpressionParser {
 		}
 
 		@Override
-		public void exitRule(mulExprContext ctx) {
+		public void exitRule(opExprContext ctx) {
 			final Expression expr;
 			Expression leftExpr = stack.pop();
 			String op = ctx.op.getText();
@@ -56,15 +54,5 @@ public class V4ExpressionParserListenerStyle extends ExpressionParser {
 			stack.push(expr);
 		}
 
-		@Override
-		public void exitRule(addExprContext ctx) {
-			final Expression expr;
-			Expression leftExpr = stack.pop();
-			String op = ctx.op.getText();
-			Expression rightExpr = stack.pop();
-			Operation operation = new Operation(op, leftExpr, rightExpr);
-			expr = operation;
-			stack.push(expr);
-		}
 	}
 }
