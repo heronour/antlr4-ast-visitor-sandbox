@@ -18,8 +18,8 @@ start
 
 expr
 : '(' e=expr ')'                       -> parenExpr
-| left=expr (op='*'|op='/') right=expr -> mulExpr
-| left=expr (op='+'|op='-') right=expr -> addExpr
+| left=expr (op='*'|op='/') right=expr -> opExpr
+| left=expr (op='+'|op='-') right=expr -> opExpr
 | a=atom                               -> atomExpr
 ;
 

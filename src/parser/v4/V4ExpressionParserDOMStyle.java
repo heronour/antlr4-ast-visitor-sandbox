@@ -5,11 +5,10 @@ import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 
 import parser.ExpressionParser;
-import parser.v4.ExprV4Parser.addExprContext;
 import parser.v4.ExprV4Parser.atomContext;
 import parser.v4.ExprV4Parser.atomExprContext;
 import parser.v4.ExprV4Parser.exprContext;
-import parser.v4.ExprV4Parser.mulExprContext;
+import parser.v4.ExprV4Parser.opExprContext;
 import parser.v4.ExprV4Parser.parenExprContext;
 import parser.v4.ExprV4Parser.startContext;
 import ast.Expression;
@@ -47,10 +46,8 @@ public class V4ExpressionParserDOMStyle extends ExpressionParser {
 				return expr((parenExprContext) ctx);
 			} else if (ctx instanceof atomExprContext) {
 				return expr((atomExprContext) ctx);
-			} else if (ctx instanceof mulExprContext) {
-				return expr((mulExprContext) ctx);
-			} else if (ctx instanceof addExprContext) {
-				return expr((addExprContext) ctx);
+			} else if (ctx instanceof opExprContext) {
+				return expr((opExprContext) ctx);
 			}
 			throw new IllegalArgumentException("Unknown rule type for " + ctx);
 		}
@@ -65,15 +62,7 @@ public class V4ExpressionParserDOMStyle extends ExpressionParser {
 			return atom;
 		}
 
-		Expression expr(mulExprContext ctx) {
-			Expression leftExpr = expr(ctx.left);
-			String op = ctx.op.getText();
-			Expression rightExpr = expr(ctx.right);
-			Operation operation = new Operation(op, leftExpr, rightExpr);
-			return operation;
-		}
-
-		Expression expr(addExprContext ctx) {
+		Expression expr(opExprContext ctx) {
 			Expression leftExpr = expr(ctx.left);
 			String op = ctx.op.getText();
 			Expression rightExpr = expr(ctx.right);
