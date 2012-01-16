@@ -22,7 +22,7 @@ import ast.Number;
 import ast.Operation;
 import ast.Operation.Operator;
 
-public class InterpreterTest {
+public class V3InterpreterTest {
 	@Test
 	public void simpleCalc() throws Exception {
 		Number number1 = new Number(1);
@@ -42,38 +42,6 @@ public class InterpreterTest {
 	@Test
 	public void eval() throws Exception {
 		ExpressionParser expressionParser = new V3ExpressionParser();
-		Expression expression = expressionParser.parseExpression("3 * (1 + 2)");
-		int result = expressionParser.evaluate(expression);
-		assertEquals(9, result);
-	}
-
-	@Test
-	public void evalV4() throws Exception {
-		ExpressionParser expressionParser = new V4ExpressionParser();
-		Expression expression = expressionParser.parseExpression("3 * (1 + 2)");
-		int result = expressionParser.evaluate(expression);
-		assertEquals(9, result);
-	}
-
-	@Test
-	public void evalV4DomStyle() throws Exception {
-		ExpressionParser expressionParser = new V4ExpressionParserDOMStyle();
-		Expression expression = expressionParser.parseExpression("3 * (1 + 2)");
-		int result = expressionParser.evaluate(expression);
-		assertEquals(9, result);
-	}
-
-	@Test
-	public void evalV4Listener() throws Exception {
-		ExpressionParser expressionParser = new V4ExpressionParserListenerStyle();
-		Expression expression = expressionParser.parseExpression("3 * (1 + 2)");
-		int result = expressionParser.evaluate(expression);
-		assertEquals(9, result);
-	}
-
-	@Test
-	public void evalV4WalkerListener() throws Exception {
-		ExpressionParser expressionParser = new V4ExpressionParserListenerWalkerStyle();
 		Expression expression = expressionParser.parseExpression("3 * (1 + 2)");
 		int result = expressionParser.evaluate(expression);
 		assertEquals(9, result);
