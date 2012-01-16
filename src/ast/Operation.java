@@ -1,9 +1,5 @@
 package ast;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 import visitor.Visitor;
 
 public class Operation extends Expression {
@@ -59,26 +55,6 @@ public class Operation extends Expression {
 	public void visitChildren(Visitor visitor) {
 		left.accept(visitor);
 		right.accept(visitor);
-	}
-	
-	@Override
-	public List<Node> getAllContents() {
-		List<Node> contents = new ArrayList<Node>();
-		contents.addAll(super.getAllContents());
-		contents.add(left);
-		contents.addAll(left.getAllContents());
-		contents.add(right);
-		contents.addAll(right.getAllContents());
-		return contents;
-	}
-
-	@Override
-	public List<Node> getContents() {
-		List<Node> contents = new ArrayList<Node>();
-		contents.addAll(super.getAllContents());
-		contents.add(left);
-		contents.add(right);
-		return contents;
 	}
 
 	public Operator getOperator() {
