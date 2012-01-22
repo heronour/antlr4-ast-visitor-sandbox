@@ -154,6 +154,7 @@ public class ExprV4Parser extends Parser {
 		    		setState(14); match(3);
 		    		}
 		    		break;
+
 		    	case 2:
 		    		{
 		    		_localctx = new atomExprContext(_localctx);
@@ -202,6 +203,7 @@ public class ExprV4Parser extends Parser {
 		            		setState(28); _localctx.right = expr(4);
 		            		}
 		            		break;
+
 		            	case 2:
 		            		{
 		            		_localctx = new opExprContext(new exprContext(_parentctx, _startState, _p));
@@ -300,6 +302,7 @@ public class ExprV4Parser extends Parser {
 	public boolean expr_sempred(exprContext _localctx, int predIndex) {
 		switch ( predIndex ) {
 			case 0 : return 3 >= _localctx._p;
+
 			case 1 : return 2 >= _localctx._p;
 		}
 		return true;
