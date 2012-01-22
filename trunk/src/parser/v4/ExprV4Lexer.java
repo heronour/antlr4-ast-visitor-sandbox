@@ -70,7 +70,7 @@ public class ExprV4Lexer extends Lexer {
 	}
 	public void WS_action(RuleContext _localctx, int actionIndex) {
 		switch ( actionIndex ) {
-			case 0 : _channel = HIDDEN; skip();  break;
+			case 0 : _channel = HIDDEN;  break;
 		}
 	}
 	public void INT_action(RuleContext _localctx, int actionIndex) {
