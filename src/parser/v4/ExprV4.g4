@@ -2,8 +2,6 @@ grammar ExprV4;
 
 @header {
 package parser.v4;
-
-import ast.*;
 import ast.Number;
 }
 
