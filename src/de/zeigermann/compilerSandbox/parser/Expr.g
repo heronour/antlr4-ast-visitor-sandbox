@@ -1,13 +1,14 @@
 grammar Expr;
 @header {
-package parser;
+package de.zeigermann.compilerSandbox.parser;
 
-import ast.*;
-import ast.Number;
+import de.zeigermann.compilerSandbox.ast.*;
+import de.zeigermann.compilerSandbox.ast.Number;
+
 }
 
 @lexer::header {
-package parser;
+package de.zeigermann.compilerSandbox.parser;
 }
 
 start returns [Expression expr]

@@ -1,6 +1,6 @@
 // $ANTLR 3.3 Nov 30, 2010 12:45:30 C:\\google-workspace\\ANTLR-Visitor-Demo\\src\\parser\\Expr.g 2012-01-07 16:16:49
 
-package parser;
+package de.zeigermann.compilerSandbox.parser;
 
 
 import org.antlr.runtime.*;

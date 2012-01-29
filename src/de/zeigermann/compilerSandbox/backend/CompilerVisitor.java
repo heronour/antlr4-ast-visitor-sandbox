@@ -1,25 +1,26 @@
-package backend;
+package de.zeigermann.compilerSandbox.backend;
 
-import static org.objectweb.asm.Opcodes.ACC_PROTECTED;
 import static org.objectweb.asm.Opcodes.ACC_PUBLIC;
 import static org.objectweb.asm.Opcodes.ACC_SUPER;
 import static org.objectweb.asm.Opcodes.ALOAD;
+import static org.objectweb.asm.Opcodes.IADD;
+import static org.objectweb.asm.Opcodes.IDIV;
+import static org.objectweb.asm.Opcodes.IMUL;
 import static org.objectweb.asm.Opcodes.INVOKESPECIAL;
-import static org.objectweb.asm.Opcodes.RETURN;
 import static org.objectweb.asm.Opcodes.IRETURN;
+import static org.objectweb.asm.Opcodes.ISUB;
+import static org.objectweb.asm.Opcodes.RETURN;
 import static org.objectweb.asm.Opcodes.V1_6;
-import static org.objectweb.asm.Opcodes.*;
-
-import java.util.Stack;
 
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.MethodVisitor;
 
-import visitor.Visitor;
-import ast.Expression;
-import ast.Number;
-import ast.Operation;
-import ast.Operation.Operator;
+import de.zeigermann.compilerSandbox.ast.Expression;
+import de.zeigermann.compilerSandbox.ast.Number;
+import de.zeigermann.compilerSandbox.ast.Operation;
+import de.zeigermann.compilerSandbox.ast.Operation.Operator;
+import de.zeigermann.compilerSandbox.visitor.Visitor;
+
 
 public class CompilerVisitor implements Visitor {
 
@@ -27,7 +28,7 @@ public class CompilerVisitor implements Visitor {
 
 	protected transient ClassWriter cw;
 	protected transient MethodVisitor mv;
-	private final String superClassName = "backend/Executable";
+	private final String superClassName = "de/zeigermann/compilerSandbox/backend/Executable";
 	// XXX this is the same name over and over again - if we needed more
 	// than one compiled expression at a time, we would have to specify a
 	// unique name for each
