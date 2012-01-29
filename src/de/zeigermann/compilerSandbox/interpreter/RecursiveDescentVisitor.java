@@ -1,10 +1,10 @@
-package interpreter;
+package de.zeigermann.compilerSandbox.interpreter;
 
-import ast.Expression;
-import ast.Node;
-import ast.Number;
-import ast.Operation;
-import ast.Operation.Operator;
+import de.zeigermann.compilerSandbox.ast.Expression;
+import de.zeigermann.compilerSandbox.ast.Node;
+import de.zeigermann.compilerSandbox.ast.Number;
+import de.zeigermann.compilerSandbox.ast.Operation;
+import de.zeigermann.compilerSandbox.ast.Operation.Operator;
 
 public class RecursiveDescentVisitor {
 
