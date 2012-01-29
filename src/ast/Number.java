@@ -28,4 +28,9 @@ public class Number extends Expression {
 	public void visitChildren(Visitor visitor) {
 	}
 
+	@Override
+	public String toString() {
+		return "" + getValue();
+	}
+
 }
