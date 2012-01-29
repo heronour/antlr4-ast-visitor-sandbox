@@ -5,14 +5,16 @@ import junit.framework.Assert;
 
 import org.junit.Test;
 
-import parser.ExpressionParser;
-import parser.V3ExpressionParser;
+import de.zeigermann.compilerSandbox.ast.Expression;
+import de.zeigermann.compilerSandbox.ast.Node;
+import de.zeigermann.compilerSandbox.ast.Number;
+import de.zeigermann.compilerSandbox.ast.Operation;
+import de.zeigermann.compilerSandbox.ast.Operation.Operator;
+import de.zeigermann.compilerSandbox.parser.ExpressionParser;
+import de.zeigermann.compilerSandbox.parser.V3ExpressionParser;
+import de.zeigermann.compilerSandbox.visitor.FlatVisitor;
 
-import ast.Expression;
-import ast.Node;
-import ast.Number;
-import ast.Operation;
-import ast.Operation.Operator;
+
 
 public class VisitorTest {
 

@@ -5,11 +5,12 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import parser.ExpressionParser;
-import parser.v4.V4ExpressionParserListenerStyle;
-import ast.Expression;
-import backend.CompilerVisitor;
-import backend.Executable;
+import de.zeigermann.compilerSandbox.ast.Expression;
+import de.zeigermann.compilerSandbox.backend.CompilerVisitor;
+import de.zeigermann.compilerSandbox.backend.Executable;
+import de.zeigermann.compilerSandbox.parser.ExpressionParser;
+import de.zeigermann.compilerSandbox.parser.v4.V4ExpressionParserListenerStyle;
+
 
 public class V4CompilerTest {
 	@Test

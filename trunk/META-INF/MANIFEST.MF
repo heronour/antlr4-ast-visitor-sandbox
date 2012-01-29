@@ -5,9 +5,9 @@ Bundle-SymbolicName: ANTLR-Visitor-Demo
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: ANTLR-Visitor-Demo.jar,
  lib/antlr-3.3-complete.jar
-Export-Package:  ast,
- interpreter,
- parser,
- visitor
+Export-Package: de.zeigermann.compilerSandbox.ast,
+ de.zeigermann.compilerSandbox.interpreter,
+ de.zeigermann.compilerSandbox.parser,
+ de.zeigermann.compilerSandbox.visitor
 Require-Bundle: org.eclipse.xtext;bundle-version="2.0.0",
  org.apache.log4j;bundle-version="1.2.15"

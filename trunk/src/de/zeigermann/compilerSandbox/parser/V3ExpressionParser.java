@@ -1,11 +1,12 @@
-package parser;
+package de.zeigermann.compilerSandbox.parser;
 
 import org.antlr.runtime.ANTLRStringStream;
 import org.antlr.runtime.CharStream;
 import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.RecognitionException;
 
-import ast.Expression;
+import de.zeigermann.compilerSandbox.ast.Expression;
+
 
 public class V3ExpressionParser extends ExpressionParser {
 

@@ -1,26 +1,27 @@
 package visitor;
 
 import static org.junit.Assert.*;
-import interpreter.InterpreterVisitor;
-import interpreter.PolymorphicDispatchVisitor;
-import interpreter.RecursiveDescentVisitor;
-import interpreter.StructureInterpreterVisitor;
 import junit.framework.Assert;
 
 import org.junit.Test;
 
-import parser.ExpressionParser;
-import parser.V3ExpressionParser;
-import parser.v4.V4ExpressionParser;
-import parser.v4.V4ExpressionParserDOMStyle;
-import parser.v4.V4ExpressionParserListenerStyle;
-import parser.v4.V4ExpressionParserListenerWalkerStyle;
+import de.zeigermann.compilerSandbox.ast.Expression;
+import de.zeigermann.compilerSandbox.ast.Node;
+import de.zeigermann.compilerSandbox.ast.Number;
+import de.zeigermann.compilerSandbox.ast.Operation;
+import de.zeigermann.compilerSandbox.ast.Operation.Operator;
+import de.zeigermann.compilerSandbox.interpreter.InterpreterVisitor;
+import de.zeigermann.compilerSandbox.interpreter.PolymorphicDispatchVisitor;
+import de.zeigermann.compilerSandbox.interpreter.RecursiveDescentVisitor;
+import de.zeigermann.compilerSandbox.interpreter.StructureInterpreterVisitor;
+import de.zeigermann.compilerSandbox.parser.ExpressionParser;
+import de.zeigermann.compilerSandbox.parser.V3ExpressionParser;
+import de.zeigermann.compilerSandbox.parser.v4.V4ExpressionParser;
+import de.zeigermann.compilerSandbox.parser.v4.V4ExpressionParserDOMStyle;
+import de.zeigermann.compilerSandbox.parser.v4.V4ExpressionParserListenerStyle;
+import de.zeigermann.compilerSandbox.parser.v4.V4ExpressionParserListenerWalkerStyle;
 
-import ast.Expression;
-import ast.Node;
-import ast.Number;
-import ast.Operation;
-import ast.Operation.Operator;
+
 
 public class V4InterpreterTest {
 	@Test

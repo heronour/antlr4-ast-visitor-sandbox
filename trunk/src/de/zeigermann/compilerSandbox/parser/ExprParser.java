@@ -1,12 +1,14 @@
 // $ANTLR 3.3 Nov 30, 2010 12:45:30 C:\\google-workspace\\ANTLR-Visitor-Demo\\src\\parser\\Expr.g 2012-01-07 16:16:49
 
-package parser;
+package de.zeigermann.compilerSandbox.parser;
 
-import ast.*;
-import ast.Number;
 
 
 import org.antlr.runtime.*;
+
+import de.zeigermann.compilerSandbox.ast.*;
+import de.zeigermann.compilerSandbox.ast.Number;
+
 import java.util.Stack;
 import java.util.List;
 import java.util.ArrayList;

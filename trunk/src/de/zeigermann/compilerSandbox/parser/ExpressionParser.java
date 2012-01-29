@@ -1,6 +1,6 @@
-package parser;
-import interpreter.InterpreterVisitor;
-import ast.Expression;
+package de.zeigermann.compilerSandbox.parser;
+import de.zeigermann.compilerSandbox.ast.Expression;
+import de.zeigermann.compilerSandbox.interpreter.InterpreterVisitor;
 
 public abstract class ExpressionParser {
     

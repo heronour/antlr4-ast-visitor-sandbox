@@ -1,12 +1,13 @@
-package interpreter;
+package de.zeigermann.compilerSandbox.interpreter;
 
 import java.util.Stack;
 
-import visitor.Visitor;
+import de.zeigermann.compilerSandbox.ast.Number;
+import de.zeigermann.compilerSandbox.ast.Operation;
+import de.zeigermann.compilerSandbox.ast.Operation.Operator;
+import de.zeigermann.compilerSandbox.visitor.Visitor;
 
-import ast.Number;
-import ast.Operation;
-import ast.Operation.Operator;
+
 
 
 public class InterpreterVisitor implements Visitor {

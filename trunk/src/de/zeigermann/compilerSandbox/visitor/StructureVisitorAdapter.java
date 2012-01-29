@@ -1,7 +1,7 @@
-package visitor;
+package de.zeigermann.compilerSandbox.visitor;
 
-import ast.Number;
-import ast.Operation;
+import de.zeigermann.compilerSandbox.ast.Number;
+import de.zeigermann.compilerSandbox.ast.Operation;
 
 public class StructureVisitorAdapter extends StructureVisitor {
 
