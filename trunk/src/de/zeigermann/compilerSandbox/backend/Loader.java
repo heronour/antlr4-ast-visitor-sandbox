@@ -1,4 +1,4 @@
-package backend;
+package de.zeigermann.compilerSandbox.backend;
 
 public class Loader {
 

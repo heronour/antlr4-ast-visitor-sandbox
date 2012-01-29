@@ -1,8 +1,8 @@
-package visitor;
+package de.zeigermann.compilerSandbox.visitor;
 
-import ast.Node;
-import ast.Number;
-import ast.Operation;
+import de.zeigermann.compilerSandbox.ast.Node;
+import de.zeigermann.compilerSandbox.ast.Number;
+import de.zeigermann.compilerSandbox.ast.Operation;
 
 public abstract class FlatVisitor extends StructureVisitorAdapter {
 
