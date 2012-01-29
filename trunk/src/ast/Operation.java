@@ -6,7 +6,7 @@ public class Operation extends Expression {
 
 	public static enum Operator {
 		PLUS("+"), MINUS("-"), MULTIPLY("*"), DIVIDE("/");
-		
+
 		static Operation.Operator toOperator(String operator) {
 			if (operator.equals(PLUS.symbol)) {
 				return Operation.Operator.PLUS;
@@ -22,13 +22,13 @@ public class Operation extends Expression {
 			}
 			throw new IllegalArgumentException("No such operator " + operator);
 		}
-		
+
 		final String symbol;
-		
+
 		Operator(String symbol) {
 			this.symbol = symbol;
 		}
-		
+
 	}
 
 	private final Operator operator;
@@ -67,6 +67,11 @@ public class Operation extends Expression {
 
 	public Expression getRight() {
 		return right;
+	}
+
+	@Override
+	public String toString() {
+		return left.toString() + " " + operator.symbol + " " + right.toString();
 	}
 
 }
