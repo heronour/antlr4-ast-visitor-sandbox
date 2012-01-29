@@ -1,10 +1,10 @@
 package de.zeigermann.compilerSandbox.backend;
 
 // The purpose of this class is solely to generate bytecode and then ASM-code using ByteCodeOutline.
-public class CalculatorSample extends Executable {
+public class SampleExecutable extends Executable {
 	
 	// there always is a constructor, even when you do not defined it - JVM needs it
-	public CalculatorSample() {
+	public SampleExecutable() {
 		
 	}
 	
