@@ -46,9 +46,9 @@ public class V4ExpressionParserListenerStyle extends ExpressionParser {
 		@Override
 		public void exitRule(opExprContext ctx) {
 			final Expression expr;
-			Expression leftExpr = stack.pop();
 			String op = ctx.op.getText();
 			Expression rightExpr = stack.pop();
+			Expression leftExpr = stack.pop();
 			Operation operation = new Operation(op, leftExpr, rightExpr);
 			expr = operation;
 			stack.push(expr);

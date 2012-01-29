@@ -24,7 +24,6 @@ public class V4CompilerTest {
 	}
 	
 	@Test
-	@Ignore
 	public void compileComplexV4() throws Exception {
 		ExpressionParser expressionParser = new V4ExpressionParserListenerStyle();
 		Expression expression = expressionParser.parseExpression("(3 * (1 + 2) - 1) / 4");
