@@ -20,13 +20,12 @@ import de.zeigermann.compilerSandbox.parser.v4.ExprV4Parser.atomContext;
 import de.zeigermann.compilerSandbox.parser.v4.ExprV4Parser.opExprContext;
 import de.zeigermann.compilerSandbox.parser.v4.ExprV4Parser.startContext;
 
-
 public class DirectCompileListener extends BlankExprV4Listener {
 
 	private final static int THIS = 0;
 
 	private transient Executable executable;
-	
+
 	protected transient ClassWriter cw;
 	protected transient MethodVisitor mv;
 	private final String superClassName = "de/zeigermann/compilerSandbox/backend/Executable";
@@ -38,8 +37,8 @@ public class DirectCompileListener extends BlankExprV4Listener {
 	private void createCtor() {
 		// ctor no args
 		// public ExpressionExecutable()
-		MethodVisitor mv = cw.visitMethod(ACC_PUBLIC, "<init>",
-				"()V", null, null);
+		MethodVisitor mv = cw.visitMethod(ACC_PUBLIC, "<init>", "()V", null,
+				null);
 		mv.visitCode();
 		mv.visitVarInsn(ALOAD, THIS);
 		mv.visitMethodInsn(INVOKESPECIAL, superClassName, "<init>", "()V");
@@ -62,8 +61,8 @@ public class DirectCompileListener extends BlankExprV4Listener {
 		cw = new ClassWriter(ClassWriter.COMPUTE_FRAMES);
 
 		// creating the class
-		cw.visit(V1_6, ACC_PUBLIC + ACC_SUPER, className, null,
-				superClassName, null);
+		cw.visit(V1_6, ACC_PUBLIC + ACC_SUPER, className, null, superClassName,
+				null);
 
 		// creating the constructor
 		createCtor();
@@ -73,6 +72,7 @@ public class DirectCompileListener extends BlankExprV4Listener {
 		mv.visitCode();
 
 	}
+
 	@Override
 	public void exitRule(startContext ctx) {
 		// finish
@@ -99,19 +99,15 @@ public class DirectCompileListener extends BlankExprV4Listener {
 		String operator = ctx.op.getText();
 		if (operator.equals("+")) {
 			mv.visitInsn(IADD);
-		} else 
-		if (operator.equals("-")) {
+		} else if (operator.equals("-")) {
 			mv.visitInsn(ISUB);
-		} else
-		if (operator.equals("*")) {
+		} else if (operator.equals("*")) {
 			mv.visitInsn(IMUL);
-		} else 
-		if (operator.equals("/")) {
+		} else if (operator.equals("/")) {
 			mv.visitInsn(IDIV);
 		} else {
-			throw new IllegalArgumentException("Unknown operator "
-					+ operator);
+			throw new IllegalArgumentException("Unknown operator " + operator);
 		}
 	}
-	
+
 }
