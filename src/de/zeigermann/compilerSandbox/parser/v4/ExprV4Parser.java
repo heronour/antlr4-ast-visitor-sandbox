@@ -17,7 +17,7 @@ public class ExprV4Parser extends Parser {
 		T__5=3, T__4=4, T__3=5, T__2=6, T__1=7, T__0=8, INT=9, WS=10;
 	public static final String[] tokenNames = {
 		"<INVALID>", "<INVALID>", "<INVALID>",
-		")", "+", "*", "-", "(", "/", "INT", "WS"
+		"')'", "'+'", "'*'", "'-'", "'('", "'/'", "INT", "WS"
 	};
 	public static final int
 		RULE_start = 0, RULE_expr = 1, RULE_atom = 2;
@@ -34,11 +34,11 @@ public class ExprV4Parser extends Parser {
 		}
 		@Override
 		public void enterRule(ParseTreeListener<Token> listener) {
-			if ( listener!=null ) ((ExprV4Listener)listener).enterRule(this);
+			if ( listener!=null && listener instanceof ExprV4Listener ) ((ExprV4Listener)listener).enterRule(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener<Token> listener) {
-			if ( listener!=null ) ((ExprV4Listener)listener).exitRule(this);
+			if ( listener!=null && listener instanceof ExprV4Listener ) ((ExprV4Listener)listener).exitRule(this);
 		}
 	}
 
@@ -88,44 +88,44 @@ public class ExprV4Parser extends Parser {
 		}
 		@Override
 		public void enterRule(ParseTreeListener<Token> listener) {
-			if ( listener!=null ) ((ExprV4Listener)listener).enterRule(this);
+			if ( listener!=null && listener instanceof ExprV4Listener ) ((ExprV4Listener)listener).enterRule(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener<Token> listener) {
-			if ( listener!=null ) ((ExprV4Listener)listener).exitRule(this);
+			if ( listener!=null && listener instanceof ExprV4Listener ) ((ExprV4Listener)listener).exitRule(this);
 		}
 	}
 	public static class opExprContext extends exprContext {
 		public opExprContext(exprContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener<Token> listener) {
-			if ( listener!=null ) ((ExprV4Listener)listener).enterRule(this);
+			if ( listener!=null && listener instanceof ExprV4Listener ) ((ExprV4Listener)listener).enterRule(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener<Token> listener) {
-			if ( listener!=null ) ((ExprV4Listener)listener).exitRule(this);
+			if ( listener!=null && listener instanceof ExprV4Listener ) ((ExprV4Listener)listener).exitRule(this);
 		}
 	}
 	public static class atomExprContext extends exprContext {
 		public atomExprContext(exprContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener<Token> listener) {
-			if ( listener!=null ) ((ExprV4Listener)listener).enterRule(this);
+			if ( listener!=null && listener instanceof ExprV4Listener ) ((ExprV4Listener)listener).enterRule(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener<Token> listener) {
-			if ( listener!=null ) ((ExprV4Listener)listener).exitRule(this);
+			if ( listener!=null && listener instanceof ExprV4Listener ) ((ExprV4Listener)listener).exitRule(this);
 		}
 	}
 	public static class parenExprContext extends exprContext {
 		public parenExprContext(exprContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener<Token> listener) {
-			if ( listener!=null ) ((ExprV4Listener)listener).enterRule(this);
+			if ( listener!=null && listener instanceof ExprV4Listener ) ((ExprV4Listener)listener).enterRule(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener<Token> listener) {
-			if ( listener!=null ) ((ExprV4Listener)listener).exitRule(this);
+			if ( listener!=null && listener instanceof ExprV4Listener ) ((ExprV4Listener)listener).exitRule(this);
 		}
 	}
 
@@ -255,11 +255,11 @@ public class ExprV4Parser extends Parser {
 		}
 		@Override
 		public void enterRule(ParseTreeListener<Token> listener) {
-			if ( listener!=null ) ((ExprV4Listener)listener).enterRule(this);
+			if ( listener!=null && listener instanceof ExprV4Listener ) ((ExprV4Listener)listener).enterRule(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener<Token> listener) {
-			if ( listener!=null ) ((ExprV4Listener)listener).exitRule(this);
+			if ( listener!=null && listener instanceof ExprV4Listener ) ((ExprV4Listener)listener).exitRule(this);
 		}
 	}
 

@@ -21,7 +21,7 @@ public class ExprV4Lexer extends Lexer {
 
 	public static final String[] tokenNames = {
 		"<INVALID>", "<INVALID>", "<INVALID>",
-		")", "+", "*", "-", "(", "/", "INT", "WS"
+		"')'", "'+'", "'*'", "'-'", "'('", "'/'", "INT", "WS"
 	};
 	public static final String[] ruleNames = {
 		"T__5", "T__4", "T__3", "T__2", "T__1", "T__0", "INT", "WS"
