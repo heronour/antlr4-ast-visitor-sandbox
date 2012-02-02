@@ -20,7 +20,7 @@ public class ExprV4ASTCreationParser extends Parser {
 		T__5=3, T__4=4, T__3=5, T__2=6, T__1=7, T__0=8, INT=9, WS=10;
 	public static final String[] tokenNames = {
 		"<INVALID>", "<INVALID>", "<INVALID>",
-		")", "+", "*", "-", "(", "/", "INT", "WS"
+		"')'", "'+'", "'*'", "'-'", "'('", "'/'", "INT", "WS"
 	};
 	public static final int
 		RULE_start = 0, RULE_expr = 1, RULE_atom = 2;
@@ -39,11 +39,11 @@ public class ExprV4ASTCreationParser extends Parser {
 		}
 		@Override
 		public void enterRule(ParseTreeListener<Token> listener) {
-			if ( listener!=null ) ((ExprV4ASTCreationListener)listener).enterRule(this);
+			if ( listener!=null && listener instanceof ExprV4ASTCreationListener ) ((ExprV4ASTCreationListener)listener).enterRule(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener<Token> listener) {
-			if ( listener!=null ) ((ExprV4ASTCreationListener)listener).exitRule(this);
+			if ( listener!=null && listener instanceof ExprV4ASTCreationListener ) ((ExprV4ASTCreationListener)listener).exitRule(this);
 		}
 	}
 
@@ -85,11 +85,11 @@ public class ExprV4ASTCreationParser extends Parser {
 		}
 		@Override
 		public void enterRule(ParseTreeListener<Token> listener) {
-			if ( listener!=null ) ((ExprV4ASTCreationListener)listener).enterRule(this);
+			if ( listener!=null && listener instanceof ExprV4ASTCreationListener ) ((ExprV4ASTCreationListener)listener).enterRule(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener<Token> listener) {
-			if ( listener!=null ) ((ExprV4ASTCreationListener)listener).exitRule(this);
+			if ( listener!=null && listener instanceof ExprV4ASTCreationListener ) ((ExprV4ASTCreationListener)listener).exitRule(this);
 		}
 	}
 
@@ -218,11 +218,11 @@ public class ExprV4ASTCreationParser extends Parser {
 		}
 		@Override
 		public void enterRule(ParseTreeListener<Token> listener) {
-			if ( listener!=null ) ((ExprV4ASTCreationListener)listener).enterRule(this);
+			if ( listener!=null && listener instanceof ExprV4ASTCreationListener ) ((ExprV4ASTCreationListener)listener).enterRule(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener<Token> listener) {
-			if ( listener!=null ) ((ExprV4ASTCreationListener)listener).exitRule(this);
+			if ( listener!=null && listener instanceof ExprV4ASTCreationListener ) ((ExprV4ASTCreationListener)listener).exitRule(this);
 		}
 	}
 
