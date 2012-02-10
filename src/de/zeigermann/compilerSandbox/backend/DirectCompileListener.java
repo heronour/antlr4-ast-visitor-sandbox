@@ -16,7 +16,7 @@ import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.MethodVisitor;
 
 import de.zeigermann.compilerSandbox.parser.v4.BlankExprV4Listener;
-import de.zeigermann.compilerSandbox.parser.v4.ExprV4Parser.atomContext;
+import de.zeigermann.compilerSandbox.parser.v4.ExprV4Parser.atomExprContext;
 import de.zeigermann.compilerSandbox.parser.v4.ExprV4Parser.opExprContext;
 import de.zeigermann.compilerSandbox.parser.v4.ExprV4Parser.startContext;
 
@@ -88,7 +88,7 @@ public class DirectCompileListener extends BlankExprV4Listener {
 	}
 
 	@Override
-	public void exitRule(atomContext ctx) {
+	public void exitRule(atomExprContext ctx) {
 		int value = Integer.parseInt(ctx.i.getText());
 		// this means: put a constant value on the JVM operand stack
 		mv.visitLdcInsn(value);

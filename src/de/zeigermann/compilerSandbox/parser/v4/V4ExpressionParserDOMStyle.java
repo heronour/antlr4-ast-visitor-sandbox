@@ -8,7 +8,6 @@ import de.zeigermann.compilerSandbox.ast.Expression;
 import de.zeigermann.compilerSandbox.ast.Number;
 import de.zeigermann.compilerSandbox.ast.Operation;
 import de.zeigermann.compilerSandbox.parser.ExpressionParser;
-import de.zeigermann.compilerSandbox.parser.v4.ExprV4Parser.atomContext;
 import de.zeigermann.compilerSandbox.parser.v4.ExprV4Parser.atomExprContext;
 import de.zeigermann.compilerSandbox.parser.v4.ExprV4Parser.exprContext;
 import de.zeigermann.compilerSandbox.parser.v4.ExprV4Parser.opExprContext;
@@ -59,8 +58,8 @@ public class V4ExpressionParserDOMStyle extends ExpressionParser {
 		}
 
 		Expression expr(atomExprContext ctx) {
-			Expression atom = atom(ctx.a);
-			return atom;
+			Number number = new Number(ctx.i.getText());
+			return number;
 		}
 
 		Expression expr(opExprContext ctx) {
@@ -69,11 +68,6 @@ public class V4ExpressionParserDOMStyle extends ExpressionParser {
 			Expression rightExpr = expr(ctx.right);
 			Operation operation = new Operation(op, leftExpr, rightExpr);
 			return operation;
-		}
-
-		Expression atom(atomContext ctx) {
-			Number number = new Number(ctx.i.getText());
-			return number;
 		}
 	}
 

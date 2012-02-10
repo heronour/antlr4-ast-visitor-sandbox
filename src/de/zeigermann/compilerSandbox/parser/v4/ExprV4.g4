@@ -17,12 +17,8 @@ expr
 : '(' e=expr ')'                       -> parenExpr
 | left=expr (op='*'|op='/') right=expr -> opExpr
 | left=expr (op='+'|op='-') right=expr -> opExpr
-| a=atom                               -> atomExpr
+| i=INT	                               -> atomExpr
 ;
-
-atom
-   : i=INT
-   ;
 
 INT	:	('0'..'9')+
 	;

@@ -22,12 +22,8 @@ expr returns [Expression expr]
   { $expr = new Operation($op.text, $left.expr, $right.expr); } 
 | left=expr (op='+'|op='-') right=expr
   { $expr = new Operation($op.text, $left.expr, $right.expr); } 
-| atom { $expr = $atom.expr; }
+| INT { $expr = new Number($INT.text); }
 ;
-
-atom returns [Expression expr]
-   : INT { $expr = new Number($INT.text); }
-   ;
 
 INT	:	('0'..'9')+
 	;

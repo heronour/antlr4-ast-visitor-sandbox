@@ -5,9 +5,6 @@ import org.antlr.v4.runtime.tree.*;
 import org.antlr.v4.runtime.Token;
 
 public interface ExprV4Listener extends ParseTreeListener<Token> {
-	void enterRule(ExprV4Parser.atomContext ctx);
-	void exitRule(ExprV4Parser.atomContext ctx);
-
 	void enterRule(ExprV4Parser.opExprContext ctx);
 	void exitRule(ExprV4Parser.opExprContext ctx);
 
