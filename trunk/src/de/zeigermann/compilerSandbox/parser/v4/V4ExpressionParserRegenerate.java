@@ -1,12 +1,11 @@
 package de.zeigermann.compilerSandbox.parser.v4;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CharStream;
-import org.antlr.v4.runtime.CommonToken;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.TokenRewriteStream;
 
-import de.zeigermann.compilerSandbox.parser.v4.ExprV4Parser.atomContext;
+import de.zeigermann.compilerSandbox.parser.v4.ExprV4Parser.atomExprContext;
 import de.zeigermann.compilerSandbox.parser.v4.ExprV4Parser.startContext;
 
 
@@ -32,7 +31,7 @@ public class V4ExpressionParserRegenerate {
 		ExprV4Parser parser = new ExprV4Parser(tokens);
 		parser.addParseListener(new BlankExprV4Listener() {
 			@Override
-			public void exitRule(atomContext ctx) {
+			public void exitRule(atomExprContext ctx) {
 				Token tINT = ctx.i;
 				String text = tINT.getText();
 				int value = Integer.parseInt(text);

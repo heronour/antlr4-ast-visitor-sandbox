@@ -10,7 +10,7 @@ import de.zeigermann.compilerSandbox.ast.Expression;
 import de.zeigermann.compilerSandbox.ast.Number;
 import de.zeigermann.compilerSandbox.ast.Operation;
 import de.zeigermann.compilerSandbox.parser.ExpressionParser;
-import de.zeigermann.compilerSandbox.parser.v4.ExprV4Parser.atomContext;
+import de.zeigermann.compilerSandbox.parser.v4.ExprV4Parser.atomExprContext;
 import de.zeigermann.compilerSandbox.parser.v4.ExprV4Parser.opExprContext;
 import de.zeigermann.compilerSandbox.parser.v4.ExprV4Parser.startContext;
 
@@ -39,7 +39,7 @@ public class V4ExpressionParserListenerStyle extends ExpressionParser {
 		}
 
 		@Override
-		public void exitRule(atomContext ctx) {
+		public void exitRule(atomExprContext ctx) {
 			final Number number = new Number(ctx.i.getText());
 			stack.push(number);
 		}
