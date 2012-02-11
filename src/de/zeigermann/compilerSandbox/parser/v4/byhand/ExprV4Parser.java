@@ -40,15 +40,6 @@ public class ExprV4Parser extends Parser {
 		public startContext(ParserRuleContext<Token> parent, int state) {
 			super(parent, state);
 		}
-		@Override
-		public void enterRule(ParseTreeListener<Token> listener) {
-			if ( listener!=null && listener instanceof ExprV4Listener ) ((ExprV4Listener)listener).enterRule(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener<Token> listener) {
-			if ( listener!=null && listener instanceof ExprV4Listener ) ((ExprV4Listener)listener).exitRule(this);
-		}
-		
 		public void accept(ExprV4Visitor visitor) {
 			visitor.visit(this);
 		}
@@ -122,28 +113,12 @@ public class ExprV4Parser extends Parser {
 			this.i = ctx.i;
 			this.op = ctx.op;
 		}
-		@Override
-		public void enterRule(ParseTreeListener<Token> listener) {
-			if ( listener!=null && listener instanceof ExprV4Listener ) ((ExprV4Listener)listener).enterRule(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener<Token> listener) {
-			if ( listener!=null && listener instanceof ExprV4Listener ) ((ExprV4Listener)listener).exitRule(this);
-		}
 		public void accept(ExprV4Visitor visitor) {
 			visitor.visit(this);
 		}
 	}
 	public static class opExprContext extends exprContext {
 		public opExprContext(exprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener<Token> listener) {
-			if ( listener!=null && listener instanceof ExprV4Listener ) ((ExprV4Listener)listener).enterRule(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener<Token> listener) {
-			if ( listener!=null && listener instanceof ExprV4Listener ) ((ExprV4Listener)listener).exitRule(this);
-		}
 		public void accept(ExprV4Visitor visitor) {
 			visitor.visit(this);
 		}
@@ -151,14 +126,6 @@ public class ExprV4Parser extends Parser {
 	}
 	public static class atomExprContext extends exprContext {
 		public atomExprContext(exprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener<Token> listener) {
-			if ( listener!=null && listener instanceof ExprV4Listener ) ((ExprV4Listener)listener).enterRule(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener<Token> listener) {
-			if ( listener!=null && listener instanceof ExprV4Listener ) ((ExprV4Listener)listener).exitRule(this);
-		}
 		public void accept(ExprV4Visitor visitor) {
 			visitor.visit(this);
 		}
@@ -166,14 +133,6 @@ public class ExprV4Parser extends Parser {
 	}
 	public static class parenExprContext extends exprContext {
 		public parenExprContext(exprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener<Token> listener) {
-			if ( listener!=null && listener instanceof ExprV4Listener ) ((ExprV4Listener)listener).enterRule(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener<Token> listener) {
-			if ( listener!=null && listener instanceof ExprV4Listener ) ((ExprV4Listener)listener).exitRule(this);
-		}
 		public void accept(ExprV4Visitor visitor) {
 			visitor.visit(this);
 		}
