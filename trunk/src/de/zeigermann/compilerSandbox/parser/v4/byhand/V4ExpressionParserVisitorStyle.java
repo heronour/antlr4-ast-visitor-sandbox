@@ -17,8 +17,10 @@ public class V4ExpressionParserVisitorStyle {
 		ExprV4Parser parser = new ExprV4Parser(tokens);
 		parser.setBuildParseTree(true);
 		startContext start = parser.start();
-		int result = start.accept(new InterpreterVisitor());
-		return result;
+		DirectInterpreterListener listener = new DirectInterpreterListener();
+		start.accept(new ParseTreeVisitor(listener));
+		return listener.getResult();
 	}
+
 
 }
