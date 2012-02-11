@@ -9,6 +9,7 @@ import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.atn.ATN;
 import org.antlr.v4.runtime.atn.ATNState;
+import org.antlr.v4.runtime.atn.RuleTransition;
 import org.antlr.v4.runtime.misc.IntervalSet;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import org.junit.Test;
@@ -108,9 +109,10 @@ public class ParserTest {
 	private void dumpFollowtokens(final ExprV4Parser parser,
 			ParserRuleContext<?> ctx) {
 		final String[] tokenNames = parser.getTokenNames();
-		ATN atn = parser.getInterpreter().atn;
-		ATNState s = atn.states.get(ctx.s);
-		IntervalSet expectedTokens = atn.nextTokens(s);
+//		ATN atn = parser.getInterpreter().atn;
+//		ATNState s = atn.states.get(ctx.s);
+//		IntervalSet expectedTokens = atn.nextTokens(s);
+		IntervalSet expectedTokens = getExpectedTokens(parser, ctx);
 		List<Integer> list = expectedTokens.toList();
 		System.out.println("These are the tokens that can follow now");
 		for (int position : list) {
@@ -122,4 +124,29 @@ public class ParserTest {
 			}
 		}
 	}
+	
+    public IntervalSet getExpectedTokens(final ExprV4Parser parser,
+			ParserRuleContext<?> ctx) {
+        ATN atn = parser.getInterpreter().atn;
+        ATNState s = atn.states.get(ctx.s);
+        IntervalSet following = atn.nextTokens(s);
+//        System.out.println("following "+s+"="+following);
+        if ( !following.contains(Token.EPSILON) ) return following;
+        IntervalSet expected = new IntervalSet();
+        expected.addAll(following);
+        expected.remove(Token.EPSILON);
+        while ( ctx!=null && ctx.invokingState>=0 && following.contains(Token.EPSILON) ) {
+            ATNState invokingState = atn.states.get(ctx.invokingState);
+            RuleTransition rt = (RuleTransition)invokingState.transition(0);
+            following = atn.nextTokens(rt.followState);
+            expected.addAll(following);
+            expected.remove(Token.EPSILON);
+            ctx = (ParserRuleContext<?>)ctx.parent;
+        }
+        if ( following.contains(Token.EPSILON) ) {
+            expected.add(Token.EOF);
+        }
+        return expected;
+   	}
+
 }
