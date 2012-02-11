@@ -37,11 +37,13 @@ public class ExprV4Parser extends Parser {
 		_interp = new ParserATNSimulator<Token>(this,_ATN);
 	}
 	public static class startContext extends ExprV4Context {
+		public exprContext e;;
+
 		public startContext(ParserRuleContext<Token> parent, int state) {
 			super(parent, state);
 		}
-		public void accept(ExprV4Visitor visitor) {
-			visitor.visit(this);
+		public <R> R accept(ExprV4Visitor<R> visitor) {
+			return visitor.visit(this);
 		}
 	}
 
@@ -51,7 +53,7 @@ public class ExprV4Parser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(4); expr(0);
+			setState(4); _localctx.e = expr(0);
 			setState(6); match(EOF);
 			}
 			_localctx.stop = _input.LT(-1);
@@ -74,7 +76,7 @@ public class ExprV4Parser extends Parser {
 		public ExprV4Context() {
 			super();
 		}
-		public abstract void accept(ExprV4Visitor visitor);
+		public abstract <R> R accept(ExprV4Visitor<R> visitor);
 		
 		public List<ExprV4Context> getChildren() {
 			List<ExprV4Context> result = new ArrayList<ExprV4Parser.ExprV4Context>();
@@ -113,28 +115,28 @@ public class ExprV4Parser extends Parser {
 			this.i = ctx.i;
 			this.op = ctx.op;
 		}
-		public void accept(ExprV4Visitor visitor) {
-			visitor.visit(this);
+		public <R> R accept(ExprV4Visitor<R> visitor) {
+			return visitor.visit(this);
 		}
 	}
 	public static class opExprContext extends exprContext {
 		public opExprContext(exprContext ctx) { copyFrom(ctx); }
-		public void accept(ExprV4Visitor visitor) {
-			visitor.visit(this);
+		public <R> R accept(ExprV4Visitor<R> visitor) {
+			return visitor.visit(this);
 		}
 
 	}
 	public static class atomExprContext extends exprContext {
 		public atomExprContext(exprContext ctx) { copyFrom(ctx); }
-		public void accept(ExprV4Visitor visitor) {
-			visitor.visit(this);
+		public <R> R accept(ExprV4Visitor<R> visitor) {
+			return visitor.visit(this);
 		}
 
 	}
 	public static class parenExprContext extends exprContext {
 		public parenExprContext(exprContext ctx) { copyFrom(ctx); }
-		public void accept(ExprV4Visitor visitor) {
-			visitor.visit(this);
+		public <R> R accept(ExprV4Visitor<R> visitor) {
+			return visitor.visit(this);
 		}
 
 	}
