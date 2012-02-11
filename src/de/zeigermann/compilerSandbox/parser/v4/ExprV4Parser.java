@@ -29,6 +29,7 @@ public class ExprV4Parser extends Parser {
 		_interp = new ParserATNSimulator<Token>(this,_ATN);
 	}
 	public static class startContext extends ParserRuleContext<Token> {
+		public exprContext e;;
 		public startContext(ParserRuleContext<Token> parent, int state) {
 			super(parent, state);
 		}
@@ -48,7 +49,7 @@ public class ExprV4Parser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(4); expr(0);
+			setState(4); _localctx.e = expr(0);
 			setState(6); match(EOF);
 			}
 			_localctx.stop = _input.LT(-1);

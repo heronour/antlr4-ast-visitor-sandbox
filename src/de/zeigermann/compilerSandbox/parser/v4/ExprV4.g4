@@ -9,7 +9,7 @@ package de.zeigermann.compilerSandbox.parser.v4;
 }
 
 start
-  : expr
+  : e=expr
     EOF
   ;
 

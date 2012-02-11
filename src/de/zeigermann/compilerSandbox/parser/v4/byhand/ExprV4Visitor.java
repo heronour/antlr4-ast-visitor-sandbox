@@ -6,10 +6,10 @@ import de.zeigermann.compilerSandbox.parser.v4.byhand.ExprV4Parser.opExprContext
 import de.zeigermann.compilerSandbox.parser.v4.byhand.ExprV4Parser.parenExprContext;
 import de.zeigermann.compilerSandbox.parser.v4.byhand.ExprV4Parser.startContext;
 
-public interface ExprV4Visitor {
-	void visit(opExprContext ctx);
-	void visit(startContext ctx);
-	void visit(atomExprContext ctx);
-	void visit(exprContext ctx);
-	void visit(parenExprContext ctx);
+public interface ExprV4Visitor<R> {
+	R visit(opExprContext ctx);
+	R visit(startContext ctx);
+	R visit(atomExprContext ctx);
+	R visit(exprContext ctx);
+	R visit(parenExprContext ctx);
 }

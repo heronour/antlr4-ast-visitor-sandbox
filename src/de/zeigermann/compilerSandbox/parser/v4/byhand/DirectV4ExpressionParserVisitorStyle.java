@@ -8,7 +8,7 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import de.zeigermann.compilerSandbox.parser.v4.ExprV4Lexer;
 import de.zeigermann.compilerSandbox.parser.v4.byhand.ExprV4Parser.startContext;
 
-public class V4ExpressionParserVisitorStyle {
+public class DirectV4ExpressionParserVisitorStyle {
 
 	public int interpret(String expr) {
 		CharStream input = new ANTLRInputStream(expr);
@@ -17,8 +17,9 @@ public class V4ExpressionParserVisitorStyle {
 		ExprV4Parser parser = new ExprV4Parser(tokens);
 		parser.setBuildParseTree(true);
 		startContext start = parser.start();
-		int result = start.accept(new InterpreterVisitor());
-		return result;
+		DirectInterpreterListener listener = new DirectInterpreterListener();
+		start.accept(new ParseTreeVisitor(listener));
+		return listener.getResult();
 	}
 
 }
