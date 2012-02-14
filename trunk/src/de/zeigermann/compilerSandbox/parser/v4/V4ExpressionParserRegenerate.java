@@ -31,7 +31,7 @@ public class V4ExpressionParserRegenerate {
 		ExprV4Parser parser = new ExprV4Parser(tokens);
 		parser.addParseListener(new BlankExprV4Listener() {
 			@Override
-			public void exitRule(atomExprContext ctx) {
+			public void exit(atomExprContext ctx) {
 				Token tINT = ctx.i;
 				String text = tINT.getText();
 				int value = Integer.parseInt(text);

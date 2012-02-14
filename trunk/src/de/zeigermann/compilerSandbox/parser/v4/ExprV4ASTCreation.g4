@@ -11,18 +11,18 @@ import de.zeigermann.compilerSandbox.ast.Number;
 package de.zeigermann.compilerSandbox.parser.v4;
 }
 
-start returns [Expression expr]
-  : expr {$expr = $expr.expr;}
+start returns [Expression expression]
+  : expr {$expression = $expr.expression;}
     EOF
   ;
 
-expr returns [Expression expr]
-: '(' e=expr ')' { $expr = $e.expr; }
+expr returns [Expression expression]
+: '(' e=expr ')' { $expression = $e.expression; }
 | left=expr (op='*'|op='/') right=expr
-  { $expr = new Operation($op.text, $left.expr, $right.expr); } 
+  { $expression = new Operation($op.text, $left.expression, $right.expression); } 
 | left=expr (op='+'|op='-') right=expr
-  { $expr = new Operation($op.text, $left.expr, $right.expr); } 
-| INT { $expr = new Number($INT.text); }
+  { $expression = new Operation($op.text, $left.expression, $right.expression); } 
+| INT { $expression = new Number($INT.text); }
 ;
 
 INT	:	('0'..'9')+
