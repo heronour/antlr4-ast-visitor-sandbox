@@ -66,13 +66,13 @@ public class ParserTest {
 			}
 
 			@Override
-			public void enterRule(atomExprContext ctx) {
+			public void enter(atomExprContext ctx) {
 				System.out.println("************** entering atom alternative "+ctx.toString(parser));
 				dumpFollowtokens(parser, ctx);
 			}
 			
 			@Override
-			public void exitRule(atomExprContext ctx) {
+			public void exit(atomExprContext ctx) {
 				System.out.println("------------- exiting atom alternative "+ctx.toString(parser));
 				dumpFollowtokens(parser, ctx);
 			}

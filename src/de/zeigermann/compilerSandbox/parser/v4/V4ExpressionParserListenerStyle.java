@@ -34,18 +34,18 @@ public class V4ExpressionParserListenerStyle extends ExpressionParser {
 		private final Stack<Expression> stack = new Stack<Expression>();
 
 		@Override
-		public void exitRule(startContext ctx) {
+		public void exit(startContext ctx) {
 			expression = stack.pop();
 		}
 
 		@Override
-		public void exitRule(atomExprContext ctx) {
+		public void exit(atomExprContext ctx) {
 			final Number number = new Number(ctx.i.getText());
 			stack.push(number);
 		}
 
 		@Override
-		public void exitRule(opExprContext ctx) {
+		public void exit(opExprContext ctx) {
 			final Expression expr;
 			String op = ctx.op.getText();
 			Expression rightExpr = stack.pop();

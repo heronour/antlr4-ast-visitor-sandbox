@@ -32,18 +32,19 @@ public class ExprV4ASTCreationParser extends Parser {
 		_interp = new ParserATNSimulator<Token>(this,_ATN);
 	}
 	public static class startContext extends ParserRuleContext<Token> {
-		public Expression expr;
-		public exprContext _rexpr;;
+		public exprContext expr;
+		public Token EOF;
+		public Expression expression;
 		public startContext(ParserRuleContext<Token> parent, int state) {
 			super(parent, state);
 		}
 		@Override
 		public void enterRule(ParseTreeListener<Token> listener) {
-			if ( listener!=null && listener instanceof ExprV4ASTCreationListener ) ((ExprV4ASTCreationListener)listener).enterRule(this);
+			if ( listener instanceof ExprV4ASTCreationListener ) ((ExprV4ASTCreationListener)listener).enter(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener<Token> listener) {
-			if ( listener!=null && listener instanceof ExprV4ASTCreationListener ) ((ExprV4ASTCreationListener)listener).exitRule(this);
+			if ( listener instanceof ExprV4ASTCreationListener ) ((ExprV4ASTCreationListener)listener).exit(this);
 		}
 	}
 
@@ -53,8 +54,8 @@ public class ExprV4ASTCreationParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(4); _localctx._rexpr = expr(0);
-			_localctx.expr =  _localctx._rexpr.expr;
+			setState(4); ((startContext)_localctx).expr = expr(0);
+			((startContext)_localctx).expression =  ((startContext)_localctx).expr.expression;
 			setState(8); match(EOF);
 			}
 			_localctx.stop = _input.LT(-1);
@@ -70,14 +71,15 @@ public class ExprV4ASTCreationParser extends Parser {
 	}
 
 	public static class exprContext extends ParserRuleContext<Token> {
+		public Token INT;
+		public exprContext expr1;
+		public List<exprContext> expr = new ArrayList<exprContext>();
 		public int _p;
-		public Expression expr;
-		public exprContext left;;
-		public exprContext e;;
-		public exprContext right;;
-		public exprContext _rexpr;;
-		public Token _tINT;;
-		public Token op;;
+		public Expression expression;
+		public exprContext left;
+		public exprContext e;
+		public Token op;
+		public exprContext right;
 		public exprContext(ParserRuleContext<Token> parent, int state) { super(parent, state); }
 		public exprContext(ParserRuleContext<Token> parent, int state, int _p) {
 			super(parent, state);
@@ -85,11 +87,11 @@ public class ExprV4ASTCreationParser extends Parser {
 		}
 		@Override
 		public void enterRule(ParseTreeListener<Token> listener) {
-			if ( listener!=null && listener instanceof ExprV4ASTCreationListener ) ((ExprV4ASTCreationListener)listener).enterRule(this);
+			if ( listener instanceof ExprV4ASTCreationListener ) ((ExprV4ASTCreationListener)listener).enter(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener<Token> listener) {
-			if ( listener!=null && listener instanceof ExprV4ASTCreationListener ) ((ExprV4ASTCreationListener)listener).exitRule(this);
+			if ( listener instanceof ExprV4ASTCreationListener ) ((ExprV4ASTCreationListener)listener).exit(this);
 		}
 	}
 
@@ -108,15 +110,15 @@ public class ExprV4ASTCreationParser extends Parser {
 				case 7:
 					{
 					setState(10); match(7);
-					setState(12); _localctx.e = _localctx._rexpr = expr(0);
+					setState(12); ((exprContext)_localctx).e = expr(0);
 					setState(14); match(3);
-					 _localctx.expr =  _localctx.e.expr; 
+					 ((exprContext)_localctx).expression =  ((exprContext)_localctx).e.expression; 
 					}
 					break;
 				case INT:
 					{
-					setState(18); _localctx._tINT = match(INT);
-					 _localctx.expr =  new Number((_localctx._tINT!=null?_localctx._tINT.getText():null)); 
+					setState(18); ((exprContext)_localctx).INT = match(INT);
+					 ((exprContext)_localctx).expression =  new Number((((exprContext)_localctx).INT!=null?((exprContext)_localctx).INT.getText():null)); 
 					}
 					break;
 				default :
@@ -149,19 +151,19 @@ public class ExprV4ASTCreationParser extends Parser {
 							switch ( _input.LA(1) ) {
 								case 5:
 									{
-									setState(26); _localctx.op = match(5);
+									setState(26); ((exprContext)_localctx).op = match(5);
 									}
 									break;
 								case 8:
 									{
-									setState(28); _localctx.op = match(8);
+									setState(28); ((exprContext)_localctx).op = match(8);
 									}
 									break;
 								default :
 									throw new NoViableAltException(this);
 							}
-							setState(32); _localctx.right = _localctx._rexpr = expr(4);
-							 _localctx.expr =  new Operation((_localctx.op!=null?_localctx.op.getText():null), _localctx.left.expr, _localctx.right.expr); 
+							setState(32); ((exprContext)_localctx).right = expr(4);
+							 ((exprContext)_localctx).expression =  new Operation((((exprContext)_localctx).op!=null?((exprContext)_localctx).op.getText():null), ((exprContext)_localctx).left.expression, ((exprContext)_localctx).right.expression); 
 							}
 							break;
 
@@ -179,19 +181,19 @@ public class ExprV4ASTCreationParser extends Parser {
 							switch ( _input.LA(1) ) {
 								case 4:
 									{
-									setState(38); _localctx.op = match(4);
+									setState(38); ((exprContext)_localctx).op = match(4);
 									}
 									break;
 								case 6:
 									{
-									setState(40); _localctx.op = match(6);
+									setState(40); ((exprContext)_localctx).op = match(6);
 									}
 									break;
 								default :
 									throw new NoViableAltException(this);
 							}
-							setState(44); _localctx.right = _localctx._rexpr = expr(3);
-							 _localctx.expr =  new Operation((_localctx.op!=null?_localctx.op.getText():null), _localctx.left.expr, _localctx.right.expr); 
+							setState(44); ((exprContext)_localctx).right = expr(3);
+							 ((exprContext)_localctx).expression =  new Operation((((exprContext)_localctx).op!=null?((exprContext)_localctx).op.getText():null), ((exprContext)_localctx).left.expression, ((exprContext)_localctx).right.expression); 
 							}
 							break;
 					}

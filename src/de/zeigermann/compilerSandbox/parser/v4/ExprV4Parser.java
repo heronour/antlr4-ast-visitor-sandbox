@@ -29,17 +29,19 @@ public class ExprV4Parser extends Parser {
 		_interp = new ParserATNSimulator<Token>(this,_ATN);
 	}
 	public static class startContext extends ParserRuleContext<Token> {
-		public exprContext e;;
+		public Token EOF;
+		public exprContext expr;
+		public exprContext e;
 		public startContext(ParserRuleContext<Token> parent, int state) {
 			super(parent, state);
 		}
 		@Override
 		public void enterRule(ParseTreeListener<Token> listener) {
-			if ( listener!=null && listener instanceof ExprV4Listener ) ((ExprV4Listener)listener).enterRule(this);
+			if ( listener instanceof ExprV4Listener ) ((ExprV4Listener)listener).enter(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener<Token> listener) {
-			if ( listener!=null && listener instanceof ExprV4Listener ) ((ExprV4Listener)listener).exitRule(this);
+			if ( listener instanceof ExprV4Listener ) ((ExprV4Listener)listener).exit(this);
 		}
 	}
 
@@ -49,7 +51,7 @@ public class ExprV4Parser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(4); _localctx.e = expr(0);
+			setState(4); ((startContext)_localctx).e = expr(0);
 			setState(6); match(EOF);
 			}
 			_localctx.stop = _input.LT(-1);
@@ -65,12 +67,10 @@ public class ExprV4Parser extends Parser {
 	}
 
 	public static class exprContext extends ParserRuleContext<Token> {
+		public exprContext expr1;
+		public Token INT;
+		public List<exprContext> expr = new ArrayList<exprContext>();
 		public int _p;
-		public exprContext left;;
-		public exprContext e;;
-		public exprContext right;;
-		public Token i;;
-		public Token op;;
 		public exprContext(ParserRuleContext<Token> parent, int state) { super(parent, state); }
 		public exprContext(ParserRuleContext<Token> parent, int state, int _p) {
 			super(parent, state);
@@ -80,53 +80,59 @@ public class ExprV4Parser extends Parser {
 		public exprContext() { }
 		public void copyFrom(exprContext ctx) {
 			super.copyFrom(ctx);
+			this.expr1 = ctx.expr1;
+			this.INT = ctx.INT;
+			this.expr = ctx.expr;
 			this._p = ctx._p;
-			this.left = ctx.left;
-			this.e = ctx.e;
-			this.right = ctx.right;
-			this.i = ctx.i;
-			this.op = ctx.op;
 		}
 		@Override
 		public void enterRule(ParseTreeListener<Token> listener) {
-			if ( listener!=null && listener instanceof ExprV4Listener ) ((ExprV4Listener)listener).enterRule(this);
+			if ( listener instanceof ExprV4Listener ) ((ExprV4Listener)listener).enter(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener<Token> listener) {
-			if ( listener!=null && listener instanceof ExprV4Listener ) ((ExprV4Listener)listener).exitRule(this);
+			if ( listener instanceof ExprV4Listener ) ((ExprV4Listener)listener).exit(this);
 		}
 	}
 	public static class opExprContext extends exprContext {
+		public List<exprContext> expr = new ArrayList<exprContext>();
+		public exprContext left;
+		public Token op;
+		public exprContext right;
 		public opExprContext(exprContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener<Token> listener) {
-			if ( listener!=null && listener instanceof ExprV4Listener ) ((ExprV4Listener)listener).enterRule(this);
+			if ( listener instanceof ExprV4Listener ) ((ExprV4Listener)listener).enter(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener<Token> listener) {
-			if ( listener!=null && listener instanceof ExprV4Listener ) ((ExprV4Listener)listener).exitRule(this);
+			if ( listener instanceof ExprV4Listener ) ((ExprV4Listener)listener).exit(this);
 		}
 	}
 	public static class atomExprContext extends exprContext {
+		public Token INT;
+		public Token i;
 		public atomExprContext(exprContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener<Token> listener) {
-			if ( listener!=null && listener instanceof ExprV4Listener ) ((ExprV4Listener)listener).enterRule(this);
+			if ( listener instanceof ExprV4Listener ) ((ExprV4Listener)listener).enter(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener<Token> listener) {
-			if ( listener!=null && listener instanceof ExprV4Listener ) ((ExprV4Listener)listener).exitRule(this);
+			if ( listener instanceof ExprV4Listener ) ((ExprV4Listener)listener).exit(this);
 		}
 	}
 	public static class parenExprContext extends exprContext {
+		public exprContext expr;
+		public exprContext e;
 		public parenExprContext(exprContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener<Token> listener) {
-			if ( listener!=null && listener instanceof ExprV4Listener ) ((ExprV4Listener)listener).enterRule(this);
+			if ( listener instanceof ExprV4Listener ) ((ExprV4Listener)listener).enter(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener<Token> listener) {
-			if ( listener!=null && listener instanceof ExprV4Listener ) ((ExprV4Listener)listener).exitRule(this);
+			if ( listener instanceof ExprV4Listener ) ((ExprV4Listener)listener).exit(this);
 		}
 	}
 
@@ -148,7 +154,7 @@ public class ExprV4Parser extends Parser {
 					_ctx = _localctx;
 					_prevctx = _localctx;
 					setState(8); match(7);
-					setState(10); _localctx.e = expr(0);
+					setState(10); ((parenExprContext)_localctx).e = expr(0);
 					setState(12); match(3);
 					}
 					break;
@@ -157,7 +163,7 @@ public class ExprV4Parser extends Parser {
 					_localctx = new atomExprContext(_localctx);
 					_ctx = _localctx;
 					_prevctx = _localctx;
-					setState(14); _localctx.i = match(INT);
+					setState(14); ((atomExprContext)_localctx).i = match(INT);
 					}
 					break;
 				default :
@@ -180,7 +186,7 @@ public class ExprV4Parser extends Parser {
 							{
 							_localctx = new opExprContext(new exprContext(_parentctx, _startState, _p));
 							_localctx.addChild(_prevctx);
-							_localctx.left = _prevctx;
+							((opExprContext)_localctx).left = _prevctx;
 							pushNewRecursionContext(_localctx, RULE_expr);
 							_localctx.start = _prevctx.start;
 							setState(18);
@@ -190,18 +196,18 @@ public class ExprV4Parser extends Parser {
 							switch ( _input.LA(1) ) {
 								case 5:
 									{
-									setState(20); _localctx.op = match(5);
+									setState(20); ((opExprContext)_localctx).op = match(5);
 									}
 									break;
 								case 8:
 									{
-									setState(22); _localctx.op = match(8);
+									setState(22); ((opExprContext)_localctx).op = match(8);
 									}
 									break;
 								default :
 									throw new NoViableAltException(this);
 							}
-							setState(26); _localctx.right = expr(4);
+							setState(26); ((opExprContext)_localctx).right = expr(4);
 							}
 							break;
 
@@ -209,7 +215,7 @@ public class ExprV4Parser extends Parser {
 							{
 							_localctx = new opExprContext(new exprContext(_parentctx, _startState, _p));
 							_localctx.addChild(_prevctx);
-							_localctx.left = _prevctx;
+							((opExprContext)_localctx).left = _prevctx;
 							pushNewRecursionContext(_localctx, RULE_expr);
 							_localctx.start = _prevctx.start;
 							setState(28);
@@ -219,18 +225,18 @@ public class ExprV4Parser extends Parser {
 							switch ( _input.LA(1) ) {
 								case 4:
 									{
-									setState(30); _localctx.op = match(4);
+									setState(30); ((opExprContext)_localctx).op = match(4);
 									}
 									break;
 								case 6:
 									{
-									setState(32); _localctx.op = match(6);
+									setState(32); ((opExprContext)_localctx).op = match(6);
 									}
 									break;
 								default :
 									throw new NoViableAltException(this);
 							}
-							setState(36); _localctx.right = expr(3);
+							setState(36); ((opExprContext)_localctx).right = expr(3);
 							}
 							break;
 					}

@@ -16,6 +16,6 @@ public class V4ExpressionParser extends ExpressionParser  {
 		CommonTokenStream tokens = new CommonTokenStream(lexer);
 		ExprV4ASTCreationParser parser = new ExprV4ASTCreationParser(tokens);
 		startContext ctx = parser.start();
-		return ctx.expr;
+		return ctx.expression;
     }
 }

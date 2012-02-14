@@ -56,7 +56,7 @@ public class DirectCompileListener extends BlankExprV4Listener {
 	}
 
 	@Override
-	public void enterRule(startContext ctx) {
+	public void enter(startContext ctx) {
 		// init
 		cw = new ClassWriter(ClassWriter.COMPUTE_FRAMES);
 
@@ -74,7 +74,7 @@ public class DirectCompileListener extends BlankExprV4Listener {
 	}
 
 	@Override
-	public void exitRule(startContext ctx) {
+	public void exit(startContext ctx) {
 		// finish
 		mv.visitInsn(IRETURN);
 		mv.visitMaxs(1, 1);
@@ -88,14 +88,14 @@ public class DirectCompileListener extends BlankExprV4Listener {
 	}
 
 	@Override
-	public void exitRule(atomExprContext ctx) {
+	public void exit(atomExprContext ctx) {
 		int value = Integer.parseInt(ctx.i.getText());
 		// this means: put a constant value on the JVM operand stack
 		mv.visitLdcInsn(value);
 	}
 
 	@Override
-	public void exitRule(opExprContext ctx) {
+	public void exit(opExprContext ctx) {
 		String operator = ctx.op.getText();
 		if (operator.equals("+")) {
 			mv.visitInsn(IADD);
