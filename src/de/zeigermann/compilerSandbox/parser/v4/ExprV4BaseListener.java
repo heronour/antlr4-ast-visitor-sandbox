@@ -5,7 +5,7 @@ package de.zeigermann.compilerSandbox.parser.v4;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.Token;
 
-public class BlankExprV4Listener implements ExprV4Listener {
+public class ExprV4BaseListener implements ExprV4Listener {
 	@Override public void enter(ExprV4Parser.opExprContext ctx) { }
 	@Override public void exit(ExprV4Parser.opExprContext ctx) { }
 

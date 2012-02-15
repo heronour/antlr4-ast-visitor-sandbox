@@ -29,7 +29,7 @@ public class V4ExpressionParserRegenerate {
     	ExprV4Lexer lexer = new ExprV4Lexer(input);
     	final TokenRewriteStream tokens = new TokenRewriteStream(lexer);
 		ExprV4Parser parser = new ExprV4Parser(tokens);
-		parser.addParseListener(new BlankExprV4Listener() {
+		parser.addParseListener(new ExprV4BaseListener() {
 			@Override
 			public void exit(atomExprContext ctx) {
 				Token tINT = ctx.i;
