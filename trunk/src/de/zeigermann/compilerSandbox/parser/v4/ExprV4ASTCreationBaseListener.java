@@ -8,7 +8,7 @@ import de.zeigermann.compilerSandbox.ast.Number;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.Token;
 
-public class BlankExprV4ASTCreationListener implements ExprV4ASTCreationListener {
+public class ExprV4ASTCreationBaseListener implements ExprV4ASTCreationListener {
 	@Override public void enter(ExprV4ASTCreationParser.startContext ctx) { }
 	@Override public void exit(ExprV4ASTCreationParser.startContext ctx) { }
 

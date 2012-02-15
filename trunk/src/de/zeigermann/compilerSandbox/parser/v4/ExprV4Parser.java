@@ -29,9 +29,11 @@ public class ExprV4Parser extends Parser {
 		_interp = new ParserATNSimulator<Token>(this,_ATN);
 	}
 	public static class startContext extends ParserRuleContext<Token> {
-		public Token EOF;
-		public exprContext expr;
 		public exprContext e;
+		public Token EOF() { return getToken(ExprV4Parser.EOF, 0); }
+		public exprContext expr() {
+		    return (exprContext)getRuleContext(exprContext.class,0);
+		}
 		public startContext(ParserRuleContext<Token> parent, int state) {
 			super(parent, state);
 		}
@@ -67,9 +69,6 @@ public class ExprV4Parser extends Parser {
 	}
 
 	public static class exprContext extends ParserRuleContext<Token> {
-		public exprContext expr1;
-		public Token INT;
-		public List<exprContext> expr = new ArrayList<exprContext>();
 		public int _p;
 		public exprContext(ParserRuleContext<Token> parent, int state) { super(parent, state); }
 		public exprContext(ParserRuleContext<Token> parent, int state, int _p) {
@@ -80,9 +79,6 @@ public class ExprV4Parser extends Parser {
 		public exprContext() { }
 		public void copyFrom(exprContext ctx) {
 			super.copyFrom(ctx);
-			this.expr1 = ctx.expr1;
-			this.INT = ctx.INT;
-			this.expr = ctx.expr;
 			this._p = ctx._p;
 		}
 		@Override
@@ -95,10 +91,15 @@ public class ExprV4Parser extends Parser {
 		}
 	}
 	public static class opExprContext extends exprContext {
-		public List<exprContext> expr = new ArrayList<exprContext>();
 		public exprContext left;
 		public Token op;
 		public exprContext right;
+		public exprContext expr(int i) {
+		    return (exprContext)getRuleContext(exprContext.class,i);
+		}
+		public List<? extends exprContext> expr() {
+		    return (List<exprContext>)getRuleContexts(exprContext.class);
+		}
 		public opExprContext(exprContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener<Token> listener) {
@@ -110,8 +111,8 @@ public class ExprV4Parser extends Parser {
 		}
 	}
 	public static class atomExprContext extends exprContext {
-		public Token INT;
 		public Token i;
+		public Token INT() { return getToken(ExprV4Parser.INT, 0); }
 		public atomExprContext(exprContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener<Token> listener) {
@@ -123,8 +124,10 @@ public class ExprV4Parser extends Parser {
 		}
 	}
 	public static class parenExprContext extends exprContext {
-		public exprContext expr;
 		public exprContext e;
+		public exprContext expr() {
+		    return (exprContext)getRuleContext(exprContext.class,0);
+		}
 		public parenExprContext(exprContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener<Token> listener) {

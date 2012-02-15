@@ -28,7 +28,7 @@ public class V4ExpressionParserListenerStyle extends ExpressionParser {
 		return listener.expression;
 	}
 
-	static class ExpressionASTConstructorListener extends BlankExprV4Listener {
+	static class ExpressionASTConstructorListener extends ExprV4BaseListener {
 
 		Expression expression;
 		private final Stack<Expression> stack = new Stack<Expression>();

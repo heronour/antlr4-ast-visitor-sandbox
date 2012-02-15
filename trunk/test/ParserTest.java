@@ -14,7 +14,7 @@ import org.antlr.v4.runtime.misc.IntervalSet;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import org.junit.Test;
 
-import de.zeigermann.compilerSandbox.parser.v4.BlankExprV4Listener;
+import de.zeigermann.compilerSandbox.parser.v4.ExprV4BaseListener;
 import de.zeigermann.compilerSandbox.parser.v4.ExprV4Lexer;
 import de.zeigermann.compilerSandbox.parser.v4.ExprV4Parser;
 import de.zeigermann.compilerSandbox.parser.v4.ExprV4Parser.atomExprContext;
@@ -52,7 +52,7 @@ public class ParserTest {
 		parser.setBuildParseTree(true);
 
 		final String[] tokenNames = parser.getTokenNames();
-		BlankExprV4Listener listener = new BlankExprV4Listener() {
+		ExprV4BaseListener listener = new ExprV4BaseListener() {
 
 			private void dumpParsedStuff(Token stop) {
 				final String regenerated;

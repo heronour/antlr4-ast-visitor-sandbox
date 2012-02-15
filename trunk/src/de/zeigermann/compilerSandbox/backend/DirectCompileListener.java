@@ -15,12 +15,12 @@ import static org.objectweb.asm.Opcodes.V1_6;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.MethodVisitor;
 
-import de.zeigermann.compilerSandbox.parser.v4.BlankExprV4Listener;
+import de.zeigermann.compilerSandbox.parser.v4.ExprV4BaseListener;
 import de.zeigermann.compilerSandbox.parser.v4.ExprV4Parser.atomExprContext;
 import de.zeigermann.compilerSandbox.parser.v4.ExprV4Parser.opExprContext;
 import de.zeigermann.compilerSandbox.parser.v4.ExprV4Parser.startContext;
 
-public class DirectCompileListener extends BlankExprV4Listener {
+public class DirectCompileListener extends ExprV4BaseListener {
 
 	private final static int THIS = 0;
 

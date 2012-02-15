@@ -32,9 +32,12 @@ public class ExprV4ASTCreationParser extends Parser {
 		_interp = new ParserATNSimulator<Token>(this,_ATN);
 	}
 	public static class startContext extends ParserRuleContext<Token> {
-		public exprContext expr;
-		public Token EOF;
 		public Expression expression;
+		public exprContext expr;
+		public Token EOF() { return getToken(ExprV4ASTCreationParser.EOF, 0); }
+		public exprContext expr() {
+		    return (exprContext)getRuleContext(exprContext.class,0);
+		}
 		public startContext(ParserRuleContext<Token> parent, int state) {
 			super(parent, state);
 		}
@@ -71,15 +74,17 @@ public class ExprV4ASTCreationParser extends Parser {
 	}
 
 	public static class exprContext extends ParserRuleContext<Token> {
-		public Token INT;
-		public exprContext expr1;
-		public List<exprContext> expr = new ArrayList<exprContext>();
 		public int _p;
 		public Expression expression;
 		public exprContext left;
 		public exprContext e;
+		public Token INT;
 		public Token op;
 		public exprContext right;
+		public Token INT() { return getToken(ExprV4ASTCreationParser.INT, 0); }
+		public exprContext expr() {
+		    return (exprContext)getRuleContext(exprContext.class,0);
+		}
 		public exprContext(ParserRuleContext<Token> parent, int state) { super(parent, state); }
 		public exprContext(ParserRuleContext<Token> parent, int state, int _p) {
 			super(parent, state);
