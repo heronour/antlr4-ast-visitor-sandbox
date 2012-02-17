@@ -51,7 +51,6 @@ public class ParserTest {
 		final ExprV4Parser parser = new ExprV4Parser(tokens);
 		parser.setBuildParseTree(true);
 
-		final String[] tokenNames = parser.getTokenNames();
 		ExprV4BaseListener listener = new ExprV4BaseListener() {
 
 			private void dumpParsedStuff(Token stop) {
@@ -66,30 +65,6 @@ public class ParserTest {
 			}
 
 			@Override
-			public void enter(atomExprContext ctx) {
-				System.out.println("************** entering atom alternative "+ctx.toString(parser));
-				dumpFollowtokens(parser, ctx);
-			}
-			
-			@Override
-			public void exit(atomExprContext ctx) {
-				System.out.println("------------- exiting atom alternative "+ctx.toString(parser));
-				dumpFollowtokens(parser, ctx);
-			}
-			
-			@Override
-			public void enterEveryRule(ParserRuleContext<Token> ctx) {
-				System.out.println("entering rule "+ctx.toString(parser));
-				dumpFollowtokens(parser, ctx);
-			}
-
-			@Override
-			public void exitEveryRule(ParserRuleContext<Token> ctx) {
-				System.out.println("exiting rule "+ctx.toString(parser));
-				dumpFollowtokens(parser, ctx);
-			}
-
-			@Override
 			public void visitTerminal(ParserRuleContext<Token> ctx, Token symbol) {
 				System.out.println("token rule "+ctx.toString(parser));
 				System.out.println("Found token=" + symbol.getText());
@@ -101,7 +76,6 @@ public class ParserTest {
 		parser.addParseListener(listener);
 
 		startContext start = parser.start();
-		System.out.println("\n\n =========================================\n\n");
 		ParseTreeWalker.DEFAULT.walk(listener, start);
 
 	}
@@ -109,7 +83,7 @@ public class ParserTest {
 	private void dumpFollowtokens(final ExprV4Parser parser,
 			ParserRuleContext<?> ctx) {
 		final String[] tokenNames = parser.getTokenNames();
-		IntervalSet expectedTokens = parser.getExpectedTokensWithinCurrentRule();
+		IntervalSet expectedTokens = parser.getExpectedTokens();
 		List<Integer> list = expectedTokens.toList();
 		System.out.println("These are the tokens that can follow now");
 		for (int position : list) {
