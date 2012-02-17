@@ -109,10 +109,7 @@ public class ParserTest {
 	private void dumpFollowtokens(final ExprV4Parser parser,
 			ParserRuleContext<?> ctx) {
 		final String[] tokenNames = parser.getTokenNames();
-//		ATN atn = parser.getInterpreter().atn;
-//		ATNState s = atn.states.get(ctx.s);
-//		IntervalSet expectedTokens = atn.nextTokens(s);
-		IntervalSet expectedTokens = getExpectedTokens(parser, ctx);
+		IntervalSet expectedTokens = parser.getExpectedTokensWithinCurrentRule();
 		List<Integer> list = expectedTokens.toList();
 		System.out.println("These are the tokens that can follow now");
 		for (int position : list) {
@@ -124,29 +121,4 @@ public class ParserTest {
 			}
 		}
 	}
-	
-    public IntervalSet getExpectedTokens(final ExprV4Parser parser,
-			ParserRuleContext<?> ctx) {
-        ATN atn = parser.getInterpreter().atn;
-        ATNState s = atn.states.get(ctx.s);
-        IntervalSet following = atn.nextTokens(s);
-//        System.out.println("following "+s+"="+following);
-        if ( !following.contains(Token.EPSILON) ) return following;
-        IntervalSet expected = new IntervalSet();
-        expected.addAll(following);
-        expected.remove(Token.EPSILON);
-        while ( ctx!=null && ctx.invokingState>=0 && following.contains(Token.EPSILON) ) {
-            ATNState invokingState = atn.states.get(ctx.invokingState);
-            RuleTransition rt = (RuleTransition)invokingState.transition(0);
-            following = atn.nextTokens(rt.followState);
-            expected.addAll(following);
-            expected.remove(Token.EPSILON);
-            ctx = (ParserRuleContext<?>)ctx.parent;
-        }
-        if ( following.contains(Token.EPSILON) ) {
-            expected.add(Token.EOF);
-        }
-        return expected;
-   	}
-
 }
