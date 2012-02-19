@@ -10,9 +10,9 @@ import de.zeigermann.compilerSandbox.ast.Expression;
 import de.zeigermann.compilerSandbox.ast.Number;
 import de.zeigermann.compilerSandbox.ast.Operation;
 import de.zeigermann.compilerSandbox.parser.ExpressionParser;
-import de.zeigermann.compilerSandbox.parser.v4.ExprV4Parser.atomExprContext;
-import de.zeigermann.compilerSandbox.parser.v4.ExprV4Parser.opExprContext;
-import de.zeigermann.compilerSandbox.parser.v4.ExprV4Parser.startContext;
+import de.zeigermann.compilerSandbox.parser.v4.ExprV4Parser.AtomExprContext;
+import de.zeigermann.compilerSandbox.parser.v4.ExprV4Parser.OpExprContext;
+import de.zeigermann.compilerSandbox.parser.v4.ExprV4Parser.StartContext;
 
 
 public class V4ExpressionParserListenerStyle extends ExpressionParser {
@@ -27,25 +27,25 @@ public class V4ExpressionParserListenerStyle extends ExpressionParser {
 		parser.start();
 		return listener.expression;
 	}
-
-	static class ExpressionASTConstructorListener extends ExprV4BaseListener {
+	
+	static class ExpressionASTConstructorListener extends ExprV4BaseParseListener {
 
 		Expression expression;
 		private final Stack<Expression> stack = new Stack<Expression>();
 
 		@Override
-		public void exit(startContext ctx) {
+		public void exitStart(StartContext ctx) {
 			expression = stack.pop();
 		}
 
 		@Override
-		public void exit(atomExprContext ctx) {
+		public void exitAtomExpr(AtomExprContext ctx) {
 			final Number number = new Number(ctx.i.getText());
 			stack.push(number);
 		}
 
 		@Override
-		public void exit(opExprContext ctx) {
+		public void exitOpExpr(OpExprContext ctx) {
 			final Expression expr;
 			String op = ctx.op.getText();
 			Expression rightExpr = stack.pop();

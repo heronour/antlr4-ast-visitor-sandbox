@@ -8,11 +8,11 @@ import de.zeigermann.compilerSandbox.ast.Expression;
 import de.zeigermann.compilerSandbox.ast.Number;
 import de.zeigermann.compilerSandbox.ast.Operation;
 import de.zeigermann.compilerSandbox.parser.ExpressionParser;
-import de.zeigermann.compilerSandbox.parser.v4.ExprV4Parser.atomExprContext;
-import de.zeigermann.compilerSandbox.parser.v4.ExprV4Parser.exprContext;
-import de.zeigermann.compilerSandbox.parser.v4.ExprV4Parser.opExprContext;
-import de.zeigermann.compilerSandbox.parser.v4.ExprV4Parser.parenExprContext;
-import de.zeigermann.compilerSandbox.parser.v4.ExprV4Parser.startContext;
+import de.zeigermann.compilerSandbox.parser.v4.ExprV4Parser.AtomExprContext;
+import de.zeigermann.compilerSandbox.parser.v4.ExprV4Parser.ExprContext;
+import de.zeigermann.compilerSandbox.parser.v4.ExprV4Parser.OpExprContext;
+import de.zeigermann.compilerSandbox.parser.v4.ExprV4Parser.ParenExprContext;
+import de.zeigermann.compilerSandbox.parser.v4.ExprV4Parser.StartContext;
 
 
 public class V4ExpressionParserDOMStyle extends ExpressionParser {
@@ -23,7 +23,7 @@ public class V4ExpressionParserDOMStyle extends ExpressionParser {
 		CommonTokenStream tokens = new CommonTokenStream(lexer);
 		ExprV4Parser parser = new ExprV4Parser(tokens);
 		parser.setBuildParseTree(true);
-		startContext ctx = parser.start();
+		StartContext ctx = parser.start();
 		// System.out.println("ctx="+ctx.toStringTree(parser));
 		ExprParseTreeWalker parseTreeWalker = new ExprParseTreeWalker();
 		Expression expression = parseTreeWalker.start(ctx);
@@ -35,34 +35,34 @@ public class V4ExpressionParserDOMStyle extends ExpressionParser {
 	// (atom 2))) ))) <EOF>)
 	static class ExprParseTreeWalker {
 
-		Expression start(startContext ctx) {
-			exprContext exprCtx = (exprContext) ctx.getChild(0);
+		Expression start(StartContext ctx) {
+			ExprContext exprCtx = (ExprContext) ctx.getChild(0);
 			Expression expr = expr(exprCtx);
 			return expr;
 		}
 
-		Expression expr(exprContext ctx) {
-			if (ctx instanceof parenExprContext) {
-				return expr((parenExprContext) ctx);
-			} else if (ctx instanceof atomExprContext) {
-				return expr((atomExprContext) ctx);
-			} else if (ctx instanceof opExprContext) {
-				return expr((opExprContext) ctx);
+		Expression expr(ExprContext ctx) {
+			if (ctx instanceof ParenExprContext) {
+				return expr((ParenExprContext) ctx);
+			} else if (ctx instanceof AtomExprContext) {
+				return expr((AtomExprContext) ctx);
+			} else if (ctx instanceof OpExprContext) {
+				return expr((OpExprContext) ctx);
 			}
 			throw new IllegalArgumentException("Unknown rule type for " + ctx);
 		}
 
-		Expression expr(parenExprContext ctx) {
+		Expression expr(ParenExprContext ctx) {
 			Expression parentExpr = expr(ctx.e);
 			return parentExpr;
 		}
 
-		Expression expr(atomExprContext ctx) {
+		Expression expr(AtomExprContext ctx) {
 			Number number = new Number(ctx.i.getText());
 			return number;
 		}
 
-		Expression expr(opExprContext ctx) {
+		Expression expr(OpExprContext ctx) {
 			Expression leftExpr = expr(ctx.left);
 			String op = ctx.op.getText();
 			Expression rightExpr = expr(ctx.right);

@@ -5,18 +5,15 @@ import org.antlr.v4.runtime.tree.*;
 import org.antlr.v4.runtime.Token;
 
 public interface ExprV4Listener extends ParseTreeListener<Token> {
-	void enter(ExprV4Parser.opExprContext ctx);
-	void exit(ExprV4Parser.opExprContext ctx);
+	void enterOpExpr(ExprV4Parser.OpExprContext ctx);
+	void exitOpExpr(ExprV4Parser.OpExprContext ctx);
 
-	void enter(ExprV4Parser.startContext ctx);
-	void exit(ExprV4Parser.startContext ctx);
+	void enterAtomExpr(ExprV4Parser.AtomExprContext ctx);
+	void exitAtomExpr(ExprV4Parser.AtomExprContext ctx);
 
-	void enter(ExprV4Parser.atomExprContext ctx);
-	void exit(ExprV4Parser.atomExprContext ctx);
+	void enterParenExpr(ExprV4Parser.ParenExprContext ctx);
+	void exitParenExpr(ExprV4Parser.ParenExprContext ctx);
 
-	void enter(ExprV4Parser.exprContext ctx);
-	void exit(ExprV4Parser.exprContext ctx);
-
-	void enter(ExprV4Parser.parenExprContext ctx);
-	void exit(ExprV4Parser.parenExprContext ctx);
+	void enterStart(ExprV4Parser.StartContext ctx);
+	void exitStart(ExprV4Parser.StartContext ctx);
 }

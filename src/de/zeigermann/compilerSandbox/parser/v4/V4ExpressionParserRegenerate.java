@@ -5,8 +5,8 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.TokenRewriteStream;
 
-import de.zeigermann.compilerSandbox.parser.v4.ExprV4Parser.atomExprContext;
-import de.zeigermann.compilerSandbox.parser.v4.ExprV4Parser.startContext;
+import de.zeigermann.compilerSandbox.parser.v4.ExprV4Parser.AtomExprContext;
+import de.zeigermann.compilerSandbox.parser.v4.ExprV4Parser.StartContext;
 
 
 public class V4ExpressionParserRegenerate {
@@ -16,7 +16,7 @@ public class V4ExpressionParserRegenerate {
     	ExprV4Lexer lexer = new ExprV4Lexer(input);
 		CommonTokenStream tokens = new CommonTokenStream(lexer);
 		ExprV4Parser parser = new ExprV4Parser(tokens);
-		startContext ctx = parser.start();
+		StartContext ctx = parser.start();
 		Token start = ctx.getStart();
 		Token stop = ctx.getStop();
 		String regenerated = tokens.toString(start, stop);
@@ -29,9 +29,9 @@ public class V4ExpressionParserRegenerate {
     	ExprV4Lexer lexer = new ExprV4Lexer(input);
     	final TokenRewriteStream tokens = new TokenRewriteStream(lexer);
 		ExprV4Parser parser = new ExprV4Parser(tokens);
-		parser.addParseListener(new ExprV4BaseListener() {
+		parser.addParseListener(new ExprV4BaseParseListener() {
 			@Override
-			public void exit(atomExprContext ctx) {
+			public void exitAtomExpr(AtomExprContext ctx) {
 				Token tINT = ctx.i;
 				String text = tINT.getText();
 				int value = Integer.parseInt(text);
@@ -40,7 +40,7 @@ public class V4ExpressionParserRegenerate {
 				tokens.replace(tINT, newText);
 			}
 		});
-		startContext ctx = parser.start();
+		StartContext ctx = parser.start();
 		
 		Token start = ctx.getStart();
 		Token stop = ctx.getStop();
