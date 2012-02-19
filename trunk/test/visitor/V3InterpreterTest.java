@@ -16,10 +16,10 @@ import de.zeigermann.compilerSandbox.interpreter.RecursiveDescentVisitor;
 import de.zeigermann.compilerSandbox.interpreter.StructureInterpreterVisitor;
 import de.zeigermann.compilerSandbox.parser.ExpressionParser;
 import de.zeigermann.compilerSandbox.parser.V3ExpressionParser;
-import de.zeigermann.compilerSandbox.parser.v4.V4ExpressionParser;
 import de.zeigermann.compilerSandbox.parser.v4.V4ExpressionParserDOMStyle;
 import de.zeigermann.compilerSandbox.parser.v4.V4ExpressionParserListenerStyle;
 import de.zeigermann.compilerSandbox.parser.v4.V4ExpressionParserListenerWalkerStyle;
+import de.zeigermann.compilerSandbox.parser.v4.nocontext.V4ExpressionParser;
 
 
 

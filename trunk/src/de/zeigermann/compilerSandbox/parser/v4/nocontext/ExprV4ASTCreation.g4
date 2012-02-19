@@ -1,14 +1,14 @@
 grammar ExprV4ASTCreation;
 
 @header {
-package de.zeigermann.compilerSandbox.parser.v4;
+package de.zeigermann.compilerSandbox.parser.v4.nocontext;
 
 import de.zeigermann.compilerSandbox.ast.*;
 import de.zeigermann.compilerSandbox.ast.Number;
 }
 
 @lexer::header {
-package de.zeigermann.compilerSandbox.parser.v4;
+package de.zeigermann.compilerSandbox.parser.v4.nocontext;
 }
 
 start returns [Expression expression]

@@ -14,10 +14,10 @@ start
   ;
 
 expr
-: '(' e=expr ')'                       -> parenExpr
-| left=expr (op='*'|op='/') right=expr -> opExpr
-| left=expr (op='+'|op='-') right=expr -> opExpr
-| i=INT	                               -> atomExpr
+: '(' e=expr ')'                       -> ParenExpr
+| left=expr (op='*'|op='/') right=expr -> OpExpr
+| left=expr (op='+'|op='-') right=expr -> OpExpr
+| i=INT	                               -> AtomExpr
 ;
 
 INT	:	('0'..'9')+

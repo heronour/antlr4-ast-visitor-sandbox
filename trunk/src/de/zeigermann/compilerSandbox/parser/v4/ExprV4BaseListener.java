@@ -6,22 +6,19 @@ import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.Token;
 
 public class ExprV4BaseListener implements ExprV4Listener {
-	@Override public void enter(ExprV4Parser.opExprContext ctx) { }
-	@Override public void exit(ExprV4Parser.opExprContext ctx) { }
+	public void enterOpExpr(ExprV4Parser.OpExprContext ctx) { }
+	public void exitOpExpr(ExprV4Parser.OpExprContext ctx) { }
 
-	@Override public void enter(ExprV4Parser.startContext ctx) { }
-	@Override public void exit(ExprV4Parser.startContext ctx) { }
+	public void enterAtomExpr(ExprV4Parser.AtomExprContext ctx) { }
+	public void exitAtomExpr(ExprV4Parser.AtomExprContext ctx) { }
 
-	@Override public void enter(ExprV4Parser.atomExprContext ctx) { }
-	@Override public void exit(ExprV4Parser.atomExprContext ctx) { }
+	public void enterParenExpr(ExprV4Parser.ParenExprContext ctx) { }
+	public void exitParenExpr(ExprV4Parser.ParenExprContext ctx) { }
 
-	@Override public void enter(ExprV4Parser.exprContext ctx) { }
-	@Override public void exit(ExprV4Parser.exprContext ctx) { }
+	public void enterStart(ExprV4Parser.StartContext ctx) { }
+	public void exitStart(ExprV4Parser.StartContext ctx) { }
 
-	@Override public void enter(ExprV4Parser.parenExprContext ctx) { }
-	@Override public void exit(ExprV4Parser.parenExprContext ctx) { }
-
-	@Override public void enterEveryRule(ParserRuleContext<Token> ctx) { }
-	@Override public void exitEveryRule(ParserRuleContext<Token> ctx) { }
-	@Override public void visitTerminal(ParserRuleContext<Token> ctx, Token symbol) { }
+	public void enterEveryRule(ParserRuleContext<Token> ctx) { }
+	public void exitEveryRule(ParserRuleContext<Token> ctx) { }
+	public void visitTerminal(ParserRuleContext<Token> ctx, Token symbol) { }
 }

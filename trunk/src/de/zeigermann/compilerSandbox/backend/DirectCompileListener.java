@@ -12,15 +12,18 @@ import static org.objectweb.asm.Opcodes.ISUB;
 import static org.objectweb.asm.Opcodes.RETURN;
 import static org.objectweb.asm.Opcodes.V1_6;
 
+import org.antlr.v4.runtime.ParseListener;
+import org.antlr.v4.runtime.ParserRuleContext;
+import org.antlr.v4.runtime.Token;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.MethodVisitor;
 
-import de.zeigermann.compilerSandbox.parser.v4.ExprV4BaseListener;
-import de.zeigermann.compilerSandbox.parser.v4.ExprV4Parser.atomExprContext;
-import de.zeigermann.compilerSandbox.parser.v4.ExprV4Parser.opExprContext;
-import de.zeigermann.compilerSandbox.parser.v4.ExprV4Parser.startContext;
+import de.zeigermann.compilerSandbox.parser.v4.ExprV4BaseParseListener;
+import de.zeigermann.compilerSandbox.parser.v4.ExprV4Parser.AtomExprContext;
+import de.zeigermann.compilerSandbox.parser.v4.ExprV4Parser.OpExprContext;
+import de.zeigermann.compilerSandbox.parser.v4.ExprV4Parser.StartContext;
 
-public class DirectCompileListener extends ExprV4BaseListener {
+public class DirectCompileListener extends ExprV4BaseParseListener {
 
 	private final static int THIS = 0;
 
@@ -56,7 +59,7 @@ public class DirectCompileListener extends ExprV4BaseListener {
 	}
 
 	@Override
-	public void enter(startContext ctx) {
+	public void enterStart(ParserRuleContext<Token> ctx) {
 		// init
 		cw = new ClassWriter(ClassWriter.COMPUTE_FRAMES);
 
@@ -74,7 +77,7 @@ public class DirectCompileListener extends ExprV4BaseListener {
 	}
 
 	@Override
-	public void exit(startContext ctx) {
+	public void exitStart(StartContext ctx) {
 		// finish
 		mv.visitInsn(IRETURN);
 		mv.visitMaxs(1, 1);
@@ -88,14 +91,14 @@ public class DirectCompileListener extends ExprV4BaseListener {
 	}
 
 	@Override
-	public void exit(atomExprContext ctx) {
+	public void exitAtomExpr(AtomExprContext ctx) {
 		int value = Integer.parseInt(ctx.i.getText());
 		// this means: put a constant value on the JVM operand stack
 		mv.visitLdcInsn(value);
 	}
 
 	@Override
-	public void exit(opExprContext ctx) {
+	public void exitOpExpr(OpExprContext ctx) {
 		String operator = ctx.op.getText();
 		if (operator.equals("+")) {
 			mv.visitInsn(IADD);
