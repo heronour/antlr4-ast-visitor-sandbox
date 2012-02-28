@@ -27,6 +27,19 @@ public class ExprV4ASTCreationParser extends Parser {
 	public static final String[] ruleNames = {
 		"start", "expr"
 	};
+
+	@Override
+	public String getGrammarFileName() { return "ExprV4ASTCreation.g4"; }
+
+	@Override
+	public String[] getTokenNames() { return tokenNames; }
+
+	@Override
+	public String[] getRuleNames() { return ruleNames; }
+
+	@Override
+	public ATN getATN() { return _ATN; }
+
 	public ExprV4ASTCreationParser(TokenStream input) {
 		super(input);
 		_interp = new ParserATNSimulator<Token>(this,_ATN);
@@ -34,26 +47,31 @@ public class ExprV4ASTCreationParser extends Parser {
 	public static class StartContext extends ParserRuleContext<Token> {
 		public Expression expression;
 		public ExprContext expr;
-		public Token EOF() { return getToken(ExprV4ASTCreationParser.EOF, 0); }
+		public TerminalNode<Token> EOF() { return getToken(ExprV4ASTCreationParser.EOF, 0); }
 		public ExprContext expr() {
 		    return getRuleContext(ExprContext.class,0);
 		}
 		public StartContext(ParserRuleContext<Token> parent, int state) {
 			super(parent, state);
 		}
+		@Override
 		public void enterRule(ParseTreeListener<Token> listener) {
 			if ( listener instanceof ExprV4ASTCreationListener ) ((ExprV4ASTCreationListener)listener).enterStart(this);
 		}
+		@Override
 		public void exitRule(ParseTreeListener<Token> listener) {
 			if ( listener instanceof ExprV4ASTCreationListener ) ((ExprV4ASTCreationListener)listener).exitStart(this);
 		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) { 
-		    if ( visitor instanceof ExprV4ASTCreationVisitor ) return ((ExprV4ASTCreationVisitor<T>)visitor).visitStart(this);
-		    else return null;
+			if ( visitor instanceof ExprV4ASTCreationVisitor ) return ((ExprV4ASTCreationVisitor<T>)visitor).visitStart(this);
+			else return null;
 		}
+		@Override
 		public void enterRule(ParseListener<Token> listener) {
 			if ( listener instanceof ExprV4ASTCreationParseListener ) ((ExprV4ASTCreationParseListener)listener).enterStart(this);
 		}
+		@Override
 		public void exitRule(ParseListener<Token> listener) {
 			if ( listener instanceof ExprV4ASTCreationParseListener ) ((ExprV4ASTCreationParseListener)listener).exitStart(this);
 		}
@@ -89,25 +107,32 @@ public class ExprV4ASTCreationParser extends Parser {
 		public Token INT;
 		public Token op;
 		public ExprContext right;
-		public Token INT() { return getToken(ExprV4ASTCreationParser.INT, 0); }
-		public ExprContext expr() {
-		    return getRuleContext(ExprContext.class,0);
+		public TerminalNode<Token> INT() { return getToken(ExprV4ASTCreationParser.INT, 0); }
+		public ExprContext expr(int i) {
+		    return getRuleContext(ExprContext.class,i);
+		}
+		public List<? extends ExprContext> expr() {
+		    return getRuleContexts(ExprContext.class);
 		}
 		public ExprContext(ParserRuleContext<Token> parent, int state) { super(parent, state); }
 		public ExprContext(ParserRuleContext<Token> parent, int state, int _p) {
 			super(parent, state);
 			this._p = _p;
 		}
+		@Override
 		public void enterRule(ParseTreeListener<Token> listener) {
 			if ( listener instanceof ExprV4ASTCreationListener ) ((ExprV4ASTCreationListener)listener).enterExpr(this);
 		}
+		@Override
 		public void exitRule(ParseTreeListener<Token> listener) {
 			if ( listener instanceof ExprV4ASTCreationListener ) ((ExprV4ASTCreationListener)listener).exitExpr(this);
 		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) { 
-		    if ( visitor instanceof ExprV4ASTCreationVisitor ) return ((ExprV4ASTCreationVisitor<T>)visitor).visitExpr(this);
-		    else return null;
+			if ( visitor instanceof ExprV4ASTCreationVisitor ) return ((ExprV4ASTCreationVisitor<T>)visitor).visitExpr(this);
+			else return null;
 		}
+		@Override
 		public void exitRule(ParseListener<Token> listener) {
 			if ( listener instanceof ExprV4ASTCreationParseListener ) ((ExprV4ASTCreationParseListener)listener).exitExpr(this);
 		}
@@ -184,7 +209,6 @@ public class ExprV4ASTCreationParser extends Parser {
 							 ((ExprContext)_localctx).expression =  new Operation((((ExprContext)_localctx).op!=null?((ExprContext)_localctx).op.getText():null), ((ExprContext)_localctx).left.expression, ((ExprContext)_localctx).right.expression); 
 							}
 							break;
-
 						case 2:
 							{
 							_localctx = new ExprContext(_parentctx, _startState, _p);
@@ -234,13 +258,6 @@ public class ExprV4ASTCreationParser extends Parser {
 		return _localctx;
 	}
 
-	@Override
-	public String[] getTokenNames() { return tokenNames; }
-	@Override
-	public String[] getRuleNames() { return ruleNames; }
-	@Override
-	public ATN getATN() { return _ATN; }
-
 	public boolean sempred(RuleContext _localctx, int ruleIndex, int predIndex) {
 		switch ( ruleIndex ) {
 				case 1 : return expr_sempred((ExprContext)_localctx, predIndex);
@@ -250,7 +267,6 @@ public class ExprV4ASTCreationParser extends Parser {
 	public boolean expr_sempred(ExprContext _localctx, int predIndex) {
 		switch ( predIndex ) {
 			case 0 : return 3 >= _localctx._p;
-
 			case 1 : return 2 >= _localctx._p;
 		}
 		return true;

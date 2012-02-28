@@ -10,6 +10,5 @@ import org.antlr.v4.runtime.*;
 public interface ExprV4ASTCreationParseListener extends ParseListener<Token> {
 	void enterStart(ParserRuleContext<Token> ctx);
 	void exitStart(ExprV4ASTCreationParser.StartContext ctx);
-
 	void exitExpr(ExprV4ASTCreationParser.ExprContext ctx);
 }
