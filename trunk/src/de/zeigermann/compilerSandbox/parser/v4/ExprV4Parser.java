@@ -24,32 +24,50 @@ public class ExprV4Parser extends Parser {
 	public static final String[] ruleNames = {
 		"start", "expr"
 	};
+
+	@Override
+	public String getGrammarFileName() { return "ExprV4.g4"; }
+
+	@Override
+	public String[] getTokenNames() { return tokenNames; }
+
+	@Override
+	public String[] getRuleNames() { return ruleNames; }
+
+	@Override
+	public ATN getATN() { return _ATN; }
+
 	public ExprV4Parser(TokenStream input) {
 		super(input);
 		_interp = new ParserATNSimulator<Token>(this,_ATN);
 	}
 	public static class StartContext extends ParserRuleContext<Token> {
 		public ExprContext e;
-		public Token EOF() { return getToken(ExprV4Parser.EOF, 0); }
+		public TerminalNode<Token> EOF() { return getToken(ExprV4Parser.EOF, 0); }
 		public ExprContext expr() {
 		    return getRuleContext(ExprContext.class,0);
 		}
 		public StartContext(ParserRuleContext<Token> parent, int state) {
 			super(parent, state);
 		}
+		@Override
 		public void enterRule(ParseTreeListener<Token> listener) {
 			if ( listener instanceof ExprV4Listener ) ((ExprV4Listener)listener).enterStart(this);
 		}
+		@Override
 		public void exitRule(ParseTreeListener<Token> listener) {
 			if ( listener instanceof ExprV4Listener ) ((ExprV4Listener)listener).exitStart(this);
 		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) { 
-		    if ( visitor instanceof ExprV4Visitor ) return ((ExprV4Visitor<T>)visitor).visitStart(this);
-		    else return null;
+			if ( visitor instanceof ExprV4Visitor ) return ((ExprV4Visitor<T>)visitor).visitStart(this);
+			else return null;
 		}
+		@Override
 		public void enterRule(ParseListener<Token> listener) {
 			if ( listener instanceof ExprV4ParseListener ) ((ExprV4ParseListener)listener).enterStart(this);
 		}
+		@Override
 		public void exitRule(ParseListener<Token> listener) {
 			if ( listener instanceof ExprV4ParseListener ) ((ExprV4ParseListener)listener).exitStart(this);
 		}
@@ -101,34 +119,42 @@ public class ExprV4Parser extends Parser {
 		    return getRuleContexts(ExprContext.class);
 		}
 		public OpExprContext(ExprContext ctx) { copyFrom(ctx); }
+		@Override
 		public void enterRule(ParseTreeListener<Token> listener) {
 			if ( listener instanceof ExprV4Listener ) ((ExprV4Listener)listener).enterOpExpr(this);
 		}
+		@Override
 		public void exitRule(ParseTreeListener<Token> listener) {
 			if ( listener instanceof ExprV4Listener ) ((ExprV4Listener)listener).exitOpExpr(this);
 		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) { 
-		    if ( visitor instanceof ExprV4Visitor ) return ((ExprV4Visitor<T>)visitor).visitOpExpr(this);
-		    else return null;
+			if ( visitor instanceof ExprV4Visitor ) return ((ExprV4Visitor<T>)visitor).visitOpExpr(this);
+			else return null;
 		}
+		@Override
 		public void exitRule(ParseListener<Token> listener) {
 			if ( listener instanceof ExprV4ParseListener ) ((ExprV4ParseListener)listener).exitOpExpr(this);
 		}
 	}
 	public static class AtomExprContext extends ExprContext {
 		public Token i;
-		public Token INT() { return getToken(ExprV4Parser.INT, 0); }
+		public TerminalNode<Token> INT() { return getToken(ExprV4Parser.INT, 0); }
 		public AtomExprContext(ExprContext ctx) { copyFrom(ctx); }
+		@Override
 		public void enterRule(ParseTreeListener<Token> listener) {
 			if ( listener instanceof ExprV4Listener ) ((ExprV4Listener)listener).enterAtomExpr(this);
 		}
+		@Override
 		public void exitRule(ParseTreeListener<Token> listener) {
 			if ( listener instanceof ExprV4Listener ) ((ExprV4Listener)listener).exitAtomExpr(this);
 		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) { 
-		    if ( visitor instanceof ExprV4Visitor ) return ((ExprV4Visitor<T>)visitor).visitAtomExpr(this);
-		    else return null;
+			if ( visitor instanceof ExprV4Visitor ) return ((ExprV4Visitor<T>)visitor).visitAtomExpr(this);
+			else return null;
 		}
+		@Override
 		public void exitRule(ParseListener<Token> listener) {
 			if ( listener instanceof ExprV4ParseListener ) ((ExprV4ParseListener)listener).exitAtomExpr(this);
 		}
@@ -139,16 +165,20 @@ public class ExprV4Parser extends Parser {
 		    return getRuleContext(ExprContext.class,0);
 		}
 		public ParenExprContext(ExprContext ctx) { copyFrom(ctx); }
+		@Override
 		public void enterRule(ParseTreeListener<Token> listener) {
 			if ( listener instanceof ExprV4Listener ) ((ExprV4Listener)listener).enterParenExpr(this);
 		}
+		@Override
 		public void exitRule(ParseTreeListener<Token> listener) {
 			if ( listener instanceof ExprV4Listener ) ((ExprV4Listener)listener).exitParenExpr(this);
 		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) { 
-		    if ( visitor instanceof ExprV4Visitor ) return ((ExprV4Visitor<T>)visitor).visitParenExpr(this);
-		    else return null;
+			if ( visitor instanceof ExprV4Visitor ) return ((ExprV4Visitor<T>)visitor).visitParenExpr(this);
+			else return null;
 		}
+		@Override
 		public void exitRule(ParseListener<Token> listener) {
 			if ( listener instanceof ExprV4ParseListener ) ((ExprV4ParseListener)listener).exitParenExpr(this);
 		}
@@ -228,7 +258,6 @@ public class ExprV4Parser extends Parser {
 							setState(26); ((OpExprContext)_localctx).right = expr(4);
 							}
 							break;
-
 						case 2:
 							{
 							_localctx = new OpExprContext(new ExprContext(_parentctx, _startState, _p));
@@ -277,13 +306,6 @@ public class ExprV4Parser extends Parser {
 		return _localctx;
 	}
 
-	@Override
-	public String[] getTokenNames() { return tokenNames; }
-	@Override
-	public String[] getRuleNames() { return ruleNames; }
-	@Override
-	public ATN getATN() { return _ATN; }
-
 	public boolean sempred(RuleContext _localctx, int ruleIndex, int predIndex) {
 		switch ( ruleIndex ) {
 				case 1 : return expr_sempred((ExprContext)_localctx, predIndex);
@@ -293,7 +315,6 @@ public class ExprV4Parser extends Parser {
 	public boolean expr_sempred(ExprContext _localctx, int predIndex) {
 		switch ( predIndex ) {
 			case 0 : return 3 >= _localctx._p;
-
 			case 1 : return 2 >= _localctx._p;
 		}
 		return true;
