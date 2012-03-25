@@ -9,5 +9,6 @@ import org.antlr.v4.runtime.Token;
 
 public interface ExprV4ASTCreationVisitor<T> {
 	T visitStart(ExprV4ASTCreationParser.StartContext ctx);
+
 	T visitExpr(ExprV4ASTCreationParser.ExprContext ctx);
 }
