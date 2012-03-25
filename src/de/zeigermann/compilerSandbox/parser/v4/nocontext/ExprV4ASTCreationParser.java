@@ -145,6 +145,7 @@ public class ExprV4ASTCreationParser extends Parser {
 		int _startState = 2;
 		pushNewRecursionContext(_localctx, RULE_expr);
 		try {
+			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(22);
@@ -170,9 +171,9 @@ public class ExprV4ASTCreationParser extends Parser {
 			_ctx.stop = _input.LT(-1);
 			setState(50);
 			_errHandler.sync(this);
-			int _alt72 = getInterpreter().adaptivePredict(_input,4,_ctx);
-			while ( _alt72!=2 && _alt72!=-1 ) {
-				if ( _alt72==1 ) {
+			_alt = getInterpreter().adaptivePredict(_input,4,_ctx);
+			while ( _alt!=2 && _alt!=-1 ) {
+				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
 					_prevctx.stop = _input.LT(-1);
@@ -188,7 +189,7 @@ public class ExprV4ASTCreationParser extends Parser {
 							pushNewRecursionContext(_localctx, RULE_expr);
 							_localctx.start = _prevctx.start;
 							setState(24);
-							if (!(3 >= _localctx._p)) throw new FailedPredicateException(this, "failed predicate: {3 >= $_p}?");
+							if (!(3 >= _localctx._p)) throw new FailedPredicateException(this, "3 >= $_p");
 							setState(30);
 							//_errHandler.sync(this);
 							switch ( _input.LA(1) ) {
@@ -209,6 +210,7 @@ public class ExprV4ASTCreationParser extends Parser {
 							 ((ExprContext)_localctx).expression =  new Operation((((ExprContext)_localctx).op!=null?((ExprContext)_localctx).op.getText():null), ((ExprContext)_localctx).left.expression, ((ExprContext)_localctx).right.expression); 
 							}
 							break;
+
 						case 2:
 							{
 							_localctx = new ExprContext(_parentctx, _startState, _p);
@@ -217,7 +219,7 @@ public class ExprV4ASTCreationParser extends Parser {
 							pushNewRecursionContext(_localctx, RULE_expr);
 							_localctx.start = _prevctx.start;
 							setState(36);
-							if (!(2 >= _localctx._p)) throw new FailedPredicateException(this, "failed predicate: {2 >= $_p}?");
+							if (!(2 >= _localctx._p)) throw new FailedPredicateException(this, "2 >= $_p");
 							setState(42);
 							//_errHandler.sync(this);
 							switch ( _input.LA(1) ) {
@@ -243,7 +245,7 @@ public class ExprV4ASTCreationParser extends Parser {
 				}
 				setState(52);
 				_errHandler.sync(this);
-				_alt72 = getInterpreter().adaptivePredict(_input,4,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,4,_ctx);
 			}
 			}
 			_localctx.stop = _input.LT(-1);
@@ -267,6 +269,7 @@ public class ExprV4ASTCreationParser extends Parser {
 	public boolean expr_sempred(ExprContext _localctx, int predIndex) {
 		switch ( predIndex ) {
 			case 0 : return 3 >= _localctx._p;
+
 			case 1 : return 2 >= _localctx._p;
 		}
 		return true;

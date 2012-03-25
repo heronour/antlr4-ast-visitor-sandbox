@@ -53,12 +53,19 @@ public class ExprV4Lexer extends Lexer {
 	public void action(RuleContext _localctx, int ruleIndex, int actionIndex) {
 		switch ( ruleIndex ) {
 			case 0 : T__5_action((RuleContext)_localctx, actionIndex); break;
+
 			case 1 : T__4_action((RuleContext)_localctx, actionIndex); break;
+
 			case 2 : T__3_action((RuleContext)_localctx, actionIndex); break;
+
 			case 3 : T__2_action((RuleContext)_localctx, actionIndex); break;
+
 			case 4 : T__1_action((RuleContext)_localctx, actionIndex); break;
+
 			case 5 : T__0_action((RuleContext)_localctx, actionIndex); break;
+
 			case 6 : INT_action((RuleContext)_localctx, actionIndex); break;
+
 			case 7 : WS_action((RuleContext)_localctx, actionIndex); break;
 		}
 	}
