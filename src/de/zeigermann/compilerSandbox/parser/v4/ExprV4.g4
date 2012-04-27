@@ -13,11 +13,13 @@ start
     EOF
   ;
 
+
+// # used to be ->
 expr
-: '(' e=expr ')'                       -> ParenExpr
-| left=expr (op='*'|op='/') right=expr -> OpExpr
-| left=expr (op='+'|op='-') right=expr -> OpExpr
-| i=INT	                               -> AtomExpr
+: '(' e=expr ')'                       #ParenExpr
+| left=expr (op='*'|op='/') right=expr #OpExpr
+| left=expr (op='+'|op='-') right=expr #OpExpr
+| i=INT	                               #AtomExpr
 ;
 
 INT	:	('0'..'9')+
